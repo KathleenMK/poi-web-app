@@ -7,6 +7,9 @@ const Handlebars = require("handlebars");
 const Cookie = require("@hapi/cookie");
 const env = require("dotenv");
 const dotenv = require("dotenv");
+const Joi = require("@hapi/joi");
+
+require("./app/models/db");
 
 const result = dotenv.config();
 if (result.error) {
@@ -14,19 +17,18 @@ if (result.error) {
   process.exit(1);
 }
 
-env.config();
+//env.config();
 
 const server = Hapi.server({
   port: 3000,
   host: "localhost",
 });
 
-require("./app/models/db");
-
 async function init() {
   await server.register(Inert);
   await server.register(Vision);
   await server.register(Cookie);
+  server.validator(require("@hapi/joi"));
   server.views({
     engines: {
       hbs: require("handlebars"),
