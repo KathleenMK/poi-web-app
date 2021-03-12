@@ -1,6 +1,7 @@
 "use strict";
 
 const User = require("../models/user");
+const Boom = require("@hapi/boom");
 
 const Accounts = {
   index: {
@@ -18,16 +19,25 @@ const Accounts = {
   signup: {
     auth: false,
     handler: async function (request, h) {
-      const payload = request.payload;
-      const newUser = new User({
-        firstName: payload.firstName,
-        lastName: payload.lastName,
-        email: payload.email,
-        password: payload.password,
-      });
-      const user = await newUser.save();
-      request.cookieAuth.set({ id: user.id });
-      return h.redirect("/home");
+      try {
+        const payload = request.payload;
+        let user = await User.findByEmail(payload.email);
+        if (user) {
+          const message = "Email address is already registered";
+          throw Boom.badData(message);
+        }
+        const newUser = new User({
+          firstName: payload.firstName,
+          lastName: payload.lastName,
+          email: payload.email,
+          password: payload.password,
+        });
+        user = await newUser.save();
+        request.cookieAuth.set({ id: user.id });
+        return h.redirect("/home");
+      } catch (err) {
+        return h.view("signup", { errors: [{ message: err.message }] });
+      }
     },
   },
   showLogin: {
@@ -40,15 +50,18 @@ const Accounts = {
     auth: false,
     handler: async function (request, h) {
       const { email, password } = request.payload;
-      let user = await User.findByEmail(email);
-      if (!user) {
-        return h.redirect("/");
-      }
-      if (user.comparePassword(password)) {
+      try {
+        let user = await User.findByEmail(email);
+        if (!user) {
+          const message = "Email address is not registered";
+          throw Boom.unauthorized(message);
+        }
+        user.comparePassword(password);
         request.cookieAuth.set({ id: user.id });
         return h.redirect("/home");
+      } catch (err) {
+        return h.view("login", { errors: [{ message: err.message }] });
       }
-      return h.redirect("/");
     },
   },
   logout: {
