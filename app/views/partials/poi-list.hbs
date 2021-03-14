@@ -6,6 +6,7 @@
         <thead>
         <th>Name</th>
         <th>Description</th>
+        <th>Image</th>
         <th>Contributor</th>
         <th></th>
         <th></th>
@@ -15,6 +16,7 @@
             <tr>
                 <td>{{name}}</td>
                 <td>{{description}}</td>
+                <td><img width="30" src="{{imageUrl}}"></td>
                 <td>{{contributor.firstName}} {{contributor.lastName}}</td>
                 <td><a href="/poi/{{_id}}" ><i class="fas fa-edit" style="color:cornflowerblue" title="edit"></i></a></td>
                 <td><a href="/deletepoi/{{_id}}" ><i class="fas fa-trash-alt" style="color:red" title="delete"></i></a></td>
