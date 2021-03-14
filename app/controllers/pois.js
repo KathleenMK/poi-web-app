@@ -4,6 +4,8 @@ const Poi = require("../models/poi");
 const User = require("../models/user");
 const Boom = require("@hapi/boom");
 const Joi = require("@hapi/joi");
+const cloudinary = require("cloudinary");
+const ImageStore = require("../utils/image-store");
 
 const Pois = {
   home: {
@@ -29,6 +31,7 @@ const Pois = {
         const newPoi = new Poi({
           name: data.name,
           description: data.description,
+          //imageUrl: "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615736612/vp4hhjb0rzse2wjcs6oa.jpg",
           contributor: user._id,
         });
         await newPoi.save();
@@ -50,23 +53,7 @@ const Pois = {
       }
     },
   },
-  updateOld: {
-    handler: async function (request, h) {
-      try {
-        const poiUpdate = request.payload;
-        const id = request.auth.credentials.id;
-        const user = await User.findById(id); //.lean();
-        const poi = await Poi.findById(request.params.id); //.lean();
-        poi.name = poiUpdate.name;
-        poi.description = poiUpdate.description;
-        poi.contributor = user._id;
-        await poi.save();
-        return h.view("poi", { title: "Make Changes Again", poi: poi }); //, user: user });
-      } catch (err) {
-        return h.view("poi", { errors: [{ message: err.message }] });
-      }
-    },
-  },
+
   update: {
     validate: {
       payload: {
@@ -106,6 +93,28 @@ const Pois = {
       }
     },
   },
+
+  addImage: {
+    handler: async function (request, h) {
+      try {
+        const poiEdit = request.payload;
+        //const id = request.auth.credentials.id;
+        //const user = await User.findById(id);
+        //const id = request.params.id;
+        const poi = await Poi.findByIdAndUpdate(request.params.id, {
+          name: poiEdit.name,
+          description: poiEdit.description,
+        });
+        //poi.name = poiEdit.name;
+        //poi.name = poiEdit.name;
+        //await poi.save();
+        return h.redirect("/report");
+      } catch (err) {
+        return h.view("main", { errors: [{ message: err.message }] });
+      }
+    },
+  },
+
   delete: {
     handler: async function (request, h) {
       try {
