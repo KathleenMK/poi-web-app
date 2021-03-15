@@ -3,12 +3,19 @@
 const User = require("../models/user");
 const Boom = require("@hapi/boom");
 const Joi = require("@hapi/joi");
+const AdminUser = require("../models/adminuser");
+const Poi = require("../models/poi");
 
 const Accounts = {
   index: {
     auth: false,
-    handler: function (request, h) {
-      return h.view("main", { title: "Beaches" });
+    handler: async function (request, h) {
+      const pois = await Poi.find().populate("contributor").lean();
+      return h.view("main", {
+        title: "Beaches",
+        pois: pois,
+      });
+      //return h.view("main", { title: "Beaches" });
     },
   },
   showSignup: {
@@ -43,7 +50,8 @@ const Accounts = {
       try {
         const payload = request.payload;
         let user = await User.findByEmail(payload.email);
-        if (user) {
+        let adminUser = await AdminUser.findByEmail(payload.email);
+        if (user || adminUser) {
           const message = "Email address is already registered";
           throw Boom.badData(message);
         }
@@ -55,7 +63,7 @@ const Accounts = {
         });
         user = await newUser.save();
         request.cookieAuth.set({ id: user.id });
-        return h.redirect("/home");
+        return h.redirect("/report");
       } catch (err) {
         return h.view("signup", { errors: [{ message: err.message }] });
       }
@@ -74,12 +82,18 @@ const Accounts = {
       try {
         let user = await User.findByEmail(email);
         if (!user) {
-          const message = "Email address is not registered";
-          throw Boom.unauthorized(message);
+          let adminUser = await AdminUser.findByEmail(email);
+          if (!adminUser) {
+            const message = "Email address is not registered";
+            throw Boom.unauthorized(message);
+          }
+          adminUser.comparePassword(password);
+          request.cookieAuth.set({ id: adminUser.id });
+          return h.redirect("/admin");
         }
         user.comparePassword(password);
         request.cookieAuth.set({ id: user.id });
-        return h.redirect("/home");
+        return h.redirect("/report");
       } catch (err) {
         return h.view("login", { errors: [{ message: err.message }] });
       }
@@ -92,7 +106,12 @@ const Accounts = {
       return h.redirect("/");
     },
   },
-
+  admin: {
+    handler: async function (request, h) {
+      const users = await User.find().lean();
+      return h.view("admin", { title: "Our Users", users: users });
+    },
+  },
   showSettings: {
     handler: async function (request, h) {
       try {
@@ -136,6 +155,18 @@ const Accounts = {
         user.password = userEdit.password;
         await user.save();
         return h.redirect("/settings");
+      } catch (err) {
+        return h.view("main", { errors: [{ message: err.message }] });
+      }
+    },
+  },
+  delete: {
+    handler: async function (request, h) {
+      try {
+        //const removePoi =
+        await User.findByIdAndDelete(request.params.id); //is used to find a matching document, removes it, and passing the found document (if any) to the callback. https://www.geeksforgeeks.org/mongoose-findbyidanddelete-function/ 13Mar21
+        //await Poi.findByIdAndDelete()
+        return h.redirect("/admin");
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
       }

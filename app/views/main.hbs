@@ -3,15 +3,17 @@
     {{> welcome-menu }}
 </div>
 
-<div class="uk-container uk-margin">
-    <div class="uk-child-width-expand uk-flex-center uk-flex-middle uk-text-center" uk-grid>
-        <div class="uk-width-auto@m">
-            <img width="500" src="images/tramore1.jpg" />
-        </div>
-        <div class="uk-width-expand@m">
-            <h1 class="uk-heading-small">The Beaches of Ireland</h1>
-            <p>... not just for Summer ...</p>
-            {{> error }}
-        </div>
+
+<div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="images/tramore1.jpg" uk-img>
+    <h1>Beaches</h1>
+</div>
+<h4 class="uk-heading-line uk-text-center"><span>and where to find them</span></h4>
+
+<div class="uk-container uk-padding-small">
+    <div class="uk-child-width-1-4@s uk-flex uk-flex-center" uk-grid uk-height-match="target: .uk-card">
+        {{#each pois}}
+            {{> card-main}}
+        {{/each}}
     </div>
+    {{> error }}
 </div>

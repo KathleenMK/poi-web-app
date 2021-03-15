@@ -1,5 +1,5 @@
-<div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
-    <table class="uk-table">
+<div class="uk-margin uk-width-3xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+    <table class="uk-table uk-table-hover">
         <caption>
             Here's what we have so far:
         </caption>
@@ -7,7 +7,7 @@
         <th>Name</th>
         <th>Description</th>
         <th>Image</th>
-        <th>Contributor</th>
+        <th>Added By</th>
         <th></th>
         <th></th>
         </thead>
@@ -16,7 +16,7 @@
             <tr>
                 <td>{{name}}</td>
                 <td>{{description}}</td>
-                <td><img width="30" src="{{imageUrl}}"></td>
+                <td><img width="500" src="{{imageUrl}}"></td>
                 <td>{{contributor.firstName}} {{contributor.lastName}}</td>
                 <td><a href="/poi/{{_id}}" ><i class="fas fa-edit" style="color:cornflowerblue" title="edit"></i></a></td>
                 <td><a href="/deletepoi/{{_id}}" ><i class="fas fa-trash-alt" style="color:red" title="delete"></i></a></td>
