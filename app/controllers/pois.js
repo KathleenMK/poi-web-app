@@ -182,7 +182,8 @@ const Pois = {
         const file = request.payload.imagefile;
         if (Object.keys(file).length > 0) {
           const answer = await ImageStore.uploadImage(request.payload.imagefile); //https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-javascript/return-a-value-from-a-function-with-return 14Mar21
-          console.log(answer); //secure_url is what's required
+          console.log(answer.secure_url); //secure_url is what's required
+          console.log(answer.public_id);
           const poi = await Poi.findByIdAndUpdate(request.params.id, {
             imageUrl: answer.secure_url,
             imagePublicId: answer.public_id,
