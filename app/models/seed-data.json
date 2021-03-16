@@ -35,6 +35,25 @@
       "password": "admin"
     }
   },
+  "categories": {
+    "_model": "Category",
+    "munster": {
+      "name": "Munster",
+      "description": "Munster"
+    },
+    "leinster": {
+      "name": "Leinster",
+      "description": "Leinster"
+    },
+    "connaught": {
+      "name": "Connaught",
+      "description": "Connaught"
+    },
+    "ulster": {
+      "name": "Ulster",
+      "description": "Ulster"
+    }
+  },
   "pois": {
     "_model": "Poi",
     "tramore": {
@@ -42,21 +61,24 @@
       "description": "Tramore is a seaside town located in the South East, only 13 kilometres south of Waterford city. Tramore is one of the more popular resorts in Ireland. The town is situated on the north-western corner of Tramore Bay on a hill that slopes down to the strand, or sand spit, that divides the bay. Behind the spit lies the tidal lagoon known as the Back Strand.It is a popular resort for tourists in the summer and has 5 kilometres of beach and sand dunes looking out onto the Atlantic Ocean. Most recently Tramore has gained an excellent reputation for surfing and many surfers flock to this destination. Lifeguard times are posted on the beach noticeboard.",
       "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615825674/pjmjlgd6gvld7klq3hww.jpg",
       "imagePublicId": "pjmjlgd6gvld7klq3hww",
-      "contributor": "->users.kate"
+      "contributor": "->users.kate",
+      "category": "->categories.munster"
     },
     "barleycove": {
       "name": "Barleycove Beach",
       "description": "Barleycove Beach in County Cork is located near Mizen Head which is the most southerly tip in Ireland and is unique for its sand dunes which were created from a tidal wave caused by an earthquake that occurred in Europe in 1755.",
       "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615825688/ceoypgqqheawscdwz9k7.jpg",
       "imagePublicId": "ceoypgqqheawscdwz9k7",
-      "contributor": "->users.mike"
+      "contributor": "->users.mike",
+      "category": "->categories.munster"
     },
     "seapoint": {
       "name": "Seapoint Beach",
       "description": "Seapoint beach opens to the north consisting of sand and large rocks. The beach is shallow andflat. The area is suitable for swimming at high tide to the south of the beach, the sea covers some ofthe rocks, but the area is still shallow. Seapoint is a very popular location for swimmers to the north ofthe beach and for canoeing/ kayakingto the south. The beach is life guarded during the bathing season (lifeguard times are displayed on the beach information board).",
       "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615825701/jpnbamavzebqat617e2k.jpg",
       "imagePublicId": "jpnbamavzebqat617e2k",
-      "contributor": "->users.mike"
+      "contributor": "->users.mike",
+      "category": "->categories.leinster"
     }
   }
 }

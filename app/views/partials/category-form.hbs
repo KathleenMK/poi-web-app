@@ -1,5 +1,5 @@
 <div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
-    <form class="uk-form-stacked uk-text-left" action="/add" method="POST">
+    <form class="uk-form-stacked uk-text-left" action="/addcategory" method="POST">
         <div class="uk-grid uk-grid-stack">
             <div class="uk-width-1-2@m">
                 <div class="uk-margin">
@@ -14,15 +14,7 @@
                         <input class="uk-input" id="form-stacked-text" type="text" name="description" placeholder="Description" />
                     </div>
                 </div>
-                <div class="uk-margin">
-                    <div class="uk-form-label">Select a Category</div>
-                    <div class="uk-form-controls uk-form-controls-text">
-    {{#each categories}}
-                        <label><input class="uk-radio" type="radio" name="category" value="{{_id}}"> {{name}}</label><br>
-    {{/each}}
-                    </div>
-                </div>
-                </div>
+                           </div>
             <div class=" uk-width-1-2@m">
                 <div class="uk-margin">
                     <button class="submit uk-button uk-button-primary uk-button-large uk-width-1-1">Add</button>

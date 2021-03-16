@@ -1,0 +1,13 @@
+<br>
+<div>
+    <h4 class="uk-heading-bullet"><a href="/report" >Show All</a></h4>
+    <h4 class="uk-heading-bullet">Filter By Category</h4>
+    <ul class="uk-list uk-list-disc">
+    {{#each categories}}
+        <li><a href="/reportfilter/{{_id}}" >{{name}}</a></li>
+      {{/each}}
+
+    </ul>
+    <h5 class="uk-heading-bullet"><a href="/categoryform" >Add a new Category</a></h5>
+
+</div>

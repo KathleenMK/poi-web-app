@@ -23,6 +23,9 @@ module.exports = [
   { method: "POST", path: "/poi/{id}", config: Pois.update },
   { method: "POST", path: "/uploadfile/{id}", config: Pois.uploadFile },
   { method: "GET", path: "/deleteimage/{id}", config: Pois.deleteImage },
+  { method: "GET", path: "/reportfilter/{id}", config: Pois.reportFilter },
+  { method: "GET", path: "/categoryform", config: Pois.categoryForm },
+  { method: "POST", path: "/addcategory", config: Pois.categoryAdd },
 
   {
     method: "GET",
