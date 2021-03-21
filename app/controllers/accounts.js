@@ -5,6 +5,7 @@ const Boom = require("@hapi/boom");
 const Joi = require("@hapi/joi");
 const AdminUser = require("../models/adminuser");
 const Poi = require("../models/poi");
+const Category = require("../models/category");
 
 const Accounts = {
   index: {
@@ -109,7 +110,8 @@ const Accounts = {
   admin: {
     handler: async function (request, h) {
       const users = await User.find().lean();
-      return h.view("admin", { title: "Our Users", users: users });
+      const categories = await Category.find().lean();
+      return h.view("admin", { title: "Our Users", users: users, categories: categories });
     },
   },
   showSettings: {

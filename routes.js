@@ -26,6 +26,7 @@ module.exports = [
   { method: "GET", path: "/reportfilter/{id}", config: Pois.reportFilter },
   { method: "GET", path: "/categoryform", config: Pois.categoryForm },
   { method: "POST", path: "/addcategory", config: Pois.categoryAdd },
+  { method: "GET", path: "/deletecategory/{id}", config: Pois.categoryDelete },
 
   {
     method: "GET",

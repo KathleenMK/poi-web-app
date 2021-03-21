@@ -85,6 +85,18 @@ const Pois = {
       }
     },
   },
+  categoryDelete: {
+    handler: async function (request, h) {
+      try {
+        //const removePoi =
+        await Category.findByIdAndDelete(request.params.id); //is used to find a matching document, removes it, and passing the found document (if any) to the callback. https://www.geeksforgeeks.org/mongoose-findbyidanddelete-function/ 13Mar21
+        //await Poi.findByIdAndDelete()
+        return h.redirect("/admin");
+      } catch (err) {
+        return h.view("main", { errors: [{ message: err.message }] });
+      }
+    },
+  },
   show: {
     handler: async function (request, h) {
       try {
