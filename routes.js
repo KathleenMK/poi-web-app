@@ -2,7 +2,6 @@
 
 const Accounts = require("./app/controllers/accounts");
 const Pois = require("./app/controllers/pois");
-const Gallery = require("./app/controllers/gallery");
 
 module.exports = [
   { method: "GET", path: "/", config: Accounts.index },
@@ -13,6 +12,8 @@ module.exports = [
   { method: "POST", path: "/login", config: Accounts.login },
   { method: "GET", path: "/settings", config: Accounts.showSettings },
   { method: "POST", path: "/settings", config: Accounts.updateSettings },
+  { method: "GET", path: "/admin", config: Accounts.admin },
+  { method: "GET", path: "/deleteuser/{id}", config: Accounts.delete },
 
   { method: "GET", path: "/home", config: Pois.home },
   { method: "POST", path: "/add", config: Pois.add },
@@ -20,10 +21,12 @@ module.exports = [
   { method: "GET", path: "/deletepoi/{id}", config: Pois.delete },
   { method: "GET", path: "/poi/{id}", config: Pois.show },
   { method: "POST", path: "/poi/{id}", config: Pois.update },
-
-  //{ method: 'GET', path: '/', config: Gallery.index },
-  { method: "POST", path: "/uploadfile/{id}", config: Gallery.uploadFile },
-  { method: "GET", path: "/deleteimage/{id}", config: Gallery.deleteImage },
+  { method: "POST", path: "/uploadfile/{id}", config: Pois.uploadFile },
+  { method: "GET", path: "/deleteimage/{id}", config: Pois.deleteImage },
+  { method: "GET", path: "/reportfilter/{id}", config: Pois.reportFilter },
+  { method: "GET", path: "/categoryform", config: Pois.categoryForm },
+  { method: "POST", path: "/addcategory", config: Pois.categoryAdd },
+  { method: "GET", path: "/deletecategory/{id}", config: Pois.categoryDelete },
 
   {
     method: "GET",

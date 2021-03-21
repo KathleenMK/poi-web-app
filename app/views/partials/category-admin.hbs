@@ -1,0 +1,21 @@
+<div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+    <table class="uk-table">
+        <caption>
+            Our Categories:
+        </caption>
+        <thead>
+        <th>Name</th>
+        <th>Description</th>
+        <th></th>
+        </thead>
+        <tbody class="uk-text-left">
+        {{#each categories}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{description}}</td>
+                <td><a href="/deletecategory/{{_id}}" ><i class="fas fa-trash-alt" style="color:red" title="delete"></i></a></td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
