@@ -5,9 +5,10 @@ const Schema = Mongoose.Schema;
 
 const poiSchema = new Schema({
   name: String,
+  descshort: String,
   description: String,
-  imageUrl: String,
-  imagePublicId: String,
+  imageurl: String,
+  imagepublicid: String,
   contributor: {
     type: Schema.Types.ObjectId,
     ref: "User",

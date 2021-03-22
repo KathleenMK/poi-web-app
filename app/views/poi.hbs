@@ -4,18 +4,51 @@
 </div>
 
 <div class="uk-container uk-margin">
-    <div class="uk-child-width-expand uk-flex-center uk-flex-middle uk-text-center" uk-grid>
-        <div class="uk-width-auto@m">
-            <img width="600" src="{{poi.imageUrl}}">
+<div class="uk-inline uk-width-1-1 uk-text-center" uk-grid>
+    <h2>{{poi.name}}</h2>
+</div>
+<div class="uk-text-center uk-flex-center uk-flex-middle" uk-grid>
+    <div class="uk-width-3-4">
+        <div class="uk-card uk-card-default uk-card-body"><img src="{{poi.imageurl}}"></div>
+    </div>
+    <div class="uk-width-1-4">
+        <div class="uk-card uk-card-default uk-card-body">{{> poi-weather}}</div>
+    </div>
+</div>
+<div class="uk-inline uk-width-1-1 uk-text-center" uk-grid>
+    <p>{{poi.description}}</p>
+</div>
+    <div class="uk-text-left uk-flex-center uk-flex-top" uk-grid>
+        <div class="uk-width-1-4">
+            <div class="uk-card uk-card-small uk-card-default uk-card-body">
+            <h4>Latitude</h4>
+                <p>{{poi.latitude}}</p>
+            <h4>Longitude</h4>
+                <p>{{poi.longitude}}</p>
+            </div>
         </div>
-        <div class="uk-width-auto@m">
-            {{> poi-weather}}
-        </div>
-       <div class="uk-width-expand@m">
-            <div class="uk-card uk-card-default uk-width-xlarge uk-card-body uk-box-shadow-large">
-                <h3 class="uk-card-title uk-text-center">Edit: </h3>
-                {{> poi-form}}
+        <div class="uk-width-3-4">
+            <div class="uk-card uk-card-small uk-card-default uk-card-body">
+            <h4>Short Description</h4>
+                <p>{{poi.descshort}}</p>
+            <h4>Category</h4>
+                <p>{{poi.category.name}}</p>
+            <h4>Added By</h4>
+                <p>{{poi.contributor.firstName}} {{poi.contributor.lastName}}</p>
             </div>
         </div>
     </div>
+
+    <div class="uk-text-center uk-flex-center uk-flex-top" uk-grid>
+        <div class="uk-width-1-2">
+            <div class="uk-card uk-card-default uk-card-body">{{> upload}}</div>
+        </div>
+        <div class="uk-width-1-2">
+            <div class="uk-card uk-card-default uk-card-body">
+               {{> poi-form}}
+            </div>
+        </div>
+    </div>
+
+
 </div>

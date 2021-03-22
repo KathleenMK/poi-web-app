@@ -49,12 +49,30 @@ const Pois = {
         console.log(data);
         const newPoi = new Poi({
           name: data.name,
+          descshort: data.descshort,
           description: data.description,
-          //imageUrl: "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615736612/vp4hhjb0rzse2wjcs6oa.jpg",
-          category: category,
+          category: data.category,
           contributor: user._id,
+          latitude: data.latitude,
+          longitude: data.longitude,
         });
         await newPoi.save();
+        //const poi = await Poi.findById(newPoi.id).lean();
+        //const categories = await Category.find().lean();
+        //const latitude = poi.latitude;
+        //const longitude = poi.longitude;
+        //const readWeather = await Weather.readWeather(latitude, longitude);
+        //console.log(readWeather);
+        //const weather = {
+        //  temperature: Math.round(readWeather.main.temp - 273.15),
+        //  feelsLike: Math.round(readWeather.main.feels_like - 273.15),
+        //  clouds: readWeather.weather[0].description,
+        //  windSpeed: readWeather.wind.speed,
+        //  windDirection: readWeather.wind.deg,
+        //  visibility: readWeather.visibility / 1000,
+        //  humidity: readWeather.main.humidity,
+        //};
+        //return h.view("poi", { title: "Make Changes Again", poi: poi, categories: categories, weather: weather }); //, user: user });
         return h.redirect("/report");
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
@@ -129,6 +147,7 @@ const Pois = {
     validate: {
       payload: {
         name: Joi.string().required(),
+        descshort: Joi.string().required(),
         description: Joi.string().required(),
         category: Joi.required(),
         latitude: Joi.number().required(),
@@ -157,6 +176,7 @@ const Pois = {
         //const id = request.params.id;
         const poi = await Poi.findByIdAndUpdate(request.params.id, {
           name: poiEdit.name,
+          descshort: poiEdit.descshort,
           description: poiEdit.description,
           category: poiEdit.category,
           latitude: poiEdit.latitude,
@@ -212,8 +232,8 @@ const Pois = {
           console.log(answer.secure_url); //secure_url is what's required
           console.log(answer.public_id);
           const poi = await Poi.findByIdAndUpdate(request.params.id, {
-            imageUrl: answer.secure_url,
-            imagePublicId: answer.public_id,
+            imageurl: answer.secure_url,
+            imagepublicid: answer.public_id,
           });
           return h.redirect("/report");
         }
