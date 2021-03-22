@@ -111,7 +111,7 @@ const Accounts = {
     handler: async function (request, h) {
       const users = await User.find().lean();
       const categories = await Category.find().lean();
-      return h.view("admin", { title: "Our Users", users: users, categories: categories });
+      return h.view("admin", { title: "Admin", users: users, categories: categories });
     },
   },
   showSettings: {
