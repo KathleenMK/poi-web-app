@@ -7,6 +7,7 @@ const Joi = require("@hapi/joi");
 const cloudinary = require("cloudinary");
 const ImageStore = require("../utils/image-store");
 const Category = require("../models/category");
+const Weather = require("../utils/weather");
 
 const Pois = {
   home: {
@@ -100,11 +101,24 @@ const Pois = {
   show: {
     handler: async function (request, h) {
       try {
-        const id = request.auth.credentials.id;
+        //const id = request.auth.credentials.id;
         const poi = await Poi.findById(request.params.id).lean();
-        //const user = await User.findById(id).lean();
+        const latitude = poi.latitude;
+        const longitude = poi.longitude;
+        //const user = await User.findById(id).lean();  //Might use user for last updated by
         const categories = await Category.find().lean();
-        return h.view("poi", { title: "Make Changes Again", poi: poi, categories: categories }); //, user: user });
+        const readWeather = await Weather.readWeather(latitude, longitude);
+        console.log(readWeather);
+        const weather = {
+          temperature: Math.round(readWeather.main.temp - 273.15),
+          feelsLike: Math.round(readWeather.main.feels_like - 273.15),
+          clouds: readWeather.weather[0].description,
+          windSpeed: readWeather.wind.speed,
+          windDirection: readWeather.wind.deg,
+          visibility: readWeather.visibility / 1000,
+          humidity: readWeather.main.humidity,
+        };
+        return h.view("poi", { title: "Make Changes Again", poi: poi, categories: categories, weather: weather }); //, user: user });
       } catch (err) {
         return h.view("login", { errors: [{ message: err.message }] });
       }
@@ -117,6 +131,8 @@ const Pois = {
         name: Joi.string().required(),
         description: Joi.string().required(),
         category: Joi.required(),
+        latitude: Joi.number().required(),
+        longitude: Joi.number().required(),
         //contributor: Joi.string().required(),
       },
       options: {
@@ -142,11 +158,10 @@ const Pois = {
         const poi = await Poi.findByIdAndUpdate(request.params.id, {
           name: poiEdit.name,
           description: poiEdit.description,
-          category: category,
+          category: poiEdit.category,
+          latitude: poiEdit.latitude,
+          longitude: poiEdit.longitude,
         });
-        //poi.name = poiEdit.name;
-        //poi.name = poiEdit.name;
-        //await poi.save();
         return h.redirect("/report");
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });

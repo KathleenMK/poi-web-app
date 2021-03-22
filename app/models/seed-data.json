@@ -62,7 +62,9 @@
       "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928635/fy27zgydlsizhiacopkz.jpg",
       "imagePublicId": "fy27zgydlsizhiacopkz",
       "contributor": "->users.kate",
-      "category": "->categories.munster"
+      "category": "->categories.munster",
+      "latitude": "52.15736076779771",
+      "longitude": "-7.13500077023923"
     },
     "tragumna": {
       "name": "Tragumna Beach",
@@ -70,7 +72,9 @@
       "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928689/ecosekrebc28zfxgqvqy.jpg",
       "imagePublicId": "ecosekrebc28zfxgqvqy",
       "contributor": "->users.mike",
-      "category": "->categories.munster"
+      "category": "->categories.munster",
+      "latitude": "51.5008143",
+      "longitude": "-9.2667644"
     },
     "portnoo": {
       "name": "Portnoo /Narin",
@@ -78,7 +82,9 @@
       "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928743/ak4jnloy7jlpt82bsx7i.jpg",
       "imagePublicId": "ak4jnloy7jlpt82bsx7i",
       "contributor": "->users.finn",
-      "category": "->categories.ulster"
+      "category": "->categories.ulster",
+      "latitude": "54.84008353798713",
+      "longitude": "-8.446593403027352"
     },
     "morriscastle": {
       "name": "Morriscastle",
@@ -86,7 +92,9 @@
       "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928785/jjuejhp7w34qpwhlpjof.jpg",
       "imagePublicId": "jjuejhp7w34qpwhlpjof",
       "contributor": "->users.mike",
-      "category": "->categories.leinster"
+      "category": "->categories.leinster",
+      "latitude": "52.50902192090245",
+      "longitude": "-6.241205194042975"
     },
     "greystones": {
       "name": "Greystones",
@@ -94,7 +102,9 @@
       "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928820/vzrzae72mfjhlqwf8xpn.jpg",
       "imagePublicId": "vzrzae72mfjhlqwf8xpn",
       "contributor": "->users.kate",
-      "category": "->categories.leinster"
+      "category": "->categories.leinster",
+      "latitude": "53.140528986044245",
+      "longitude": "-6.057854578173818"
     },
     "curracloe": {
       "name": "Curracloe",
@@ -102,7 +112,9 @@
       "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928858/o53pmsb7qb1vsub62ueo.jpg",
       "imagePublicId": "o53pmsb7qb1vsub62ueo",
       "contributor": "->users.mike",
-      "category": "->categories.leinster"
+      "category": "->categories.leinster",
+      "latitude": "52.38702360794494",
+      "longitude": "-6.358957389721686"
     },
     "inchydoney": {
       "name": "Inchydoney",
@@ -110,7 +122,9 @@
       "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928894/e0siangfwfipsxwabo4h.jpg",
       "imagePublicId": "e0siangfwfipsxwabo4h",
       "contributor": "->users.finn",
-      "category": "->categories.munster"
+      "category": "->categories.munster",
+      "latitude": "51.5969081",
+      "longitude": "-8.8647998"
     },
     "ballinskelligs": {
       "name": "Ballinskelligs",
@@ -118,7 +132,9 @@
       "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928940/xq95efbeyufxe15exkyg.jpg",
       "imagePublicId": "xq95efbeyufxe15exkyg",
       "contributor": "->users.eve",
-      "category": "->categories.munster"
+      "category": "->categories.munster",
+      "latitude": "51.821626818637014",
+      "longitude": "-10.272687984594721"
     },
     "ventry": {
       "name": "Ventry",
@@ -126,7 +142,9 @@
       "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928980/pvozh0ky3bihyrr7hrzf.jpg",
       "imagePublicId": "pvozh0ky3bihyrr7hrzf",
       "contributor": "->users.kate",
-      "category": "->categories.munster"
+      "category": "->categories.munster",
+      "latitude": "52.132062017955654",
+      "longitude": "-10.364144771997061"
     },
     "spanishpoint": {
       "name": "Spanish Point",
@@ -134,7 +152,9 @@
       "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615929018/kc6mutnzultucqde4pnf.jpg",
       "imagePublicId": "kc6mutnzultucqde4pnf",
       "contributor": "->users.kate",
-      "category": "->categories.munster"
+      "category": "->categories.munster",
+      "latitude": "52.8466428",
+      "longitude": "-9.439701499999956"
     },
     "inverin": {
       "name": "An Trá Mhór (Inverin)",
@@ -142,7 +162,9 @@
       "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615929057/j3akwinfojmyhkl4catt.jpg",
       "imagePublicId": "j3akwinfojmyhkl4catt",
       "contributor": "->users.mike",
-      "category": "->categories.connaught"
+      "category": "->categories.connaught",
+      "latitude": "53.22849488631776",
+      "longitude": "-9.457884677246104"
     },
     "clareisland": {
       "name": "Clare Island",
@@ -150,7 +172,9 @@
       "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615929099/qzozpbj35ohx8pxntzcv.jpg",
       "imagePublicId": "qzozpbj35ohx8pxntzcv",
       "contributor": "->users.finn",
-      "category": "->categories.connaught"
+      "category": "->categories.connaught",
+      "latitude": "53.79994049683822",
+      "longitude": "-9.951119272155754"
     },
     "templetown": {
       "name": "Shellinghill/Templetown",
@@ -158,7 +182,9 @@
       "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615929140/rr2eldolpdnaanfueqvd.jpg",
       "imagePublicId": "rr2eldolpdnaanfueqvd",
       "contributor": "->users.eve",
-      "category": "->categories.leinster"
+      "category": "->categories.leinster",
+      "latitude": "53.97980199328845",
+      "longitude": "-6.152871964001458"
     }
   }
 }
