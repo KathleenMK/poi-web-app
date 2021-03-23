@@ -20,10 +20,16 @@ const Pois = {
     handler: async function (request, h) {
       const pois = await Poi.find().populate("contributor").lean();
       const categories = await Category.find().lean();
+      const countUsers = await User.find().countDocuments();
+      const countPois = await Poi.find().countDocuments();
+      const countCategories = await Category.find().countDocuments();
       return h.view("report", {
         title: "So far...",
         pois: pois,
         categories: categories,
+        countUsers: countUsers,
+        countPois: countPois,
+        countCategories: countCategories,
       });
     },
   },
@@ -40,6 +46,29 @@ const Pois = {
   },
 
   add: {
+    validate: {
+      payload: {
+        name: Joi.string().required(),
+        descshort: Joi.string().required(),
+        description: Joi.string().required(),
+        latitude: Joi.number().required(),
+        longitude: Joi.number().required(),
+        category: Joi.required(),
+        //contributor: Joi.string().required(),
+      },
+      options: {
+        abortEarly: false,
+      },
+      failAction: function (request, h, error) {
+        return h
+          .view("home", {
+            title: "error",
+            errors: error.details,
+          })
+          .takeover()
+          .code(400);
+      },
+    },
     handler: async function (request, h) {
       try {
         const id = request.auth.credentials.id;
@@ -57,22 +86,10 @@ const Pois = {
           longitude: data.longitude,
         });
         await newPoi.save();
-        //const poi = await Poi.findById(newPoi.id).lean();
-        //const categories = await Category.find().lean();
-        //const latitude = poi.latitude;
-        //const longitude = poi.longitude;
-        //const readWeather = await Weather.readWeather(latitude, longitude);
-        //console.log(readWeather);
-        //const weather = {
-        //  temperature: Math.round(readWeather.main.temp - 273.15),
-        //  feelsLike: Math.round(readWeather.main.feels_like - 273.15),
-        //  clouds: readWeather.weather[0].description,
-        //  windSpeed: readWeather.wind.speed,
-        //  windDirection: readWeather.wind.deg,
-        //  visibility: readWeather.visibility / 1000,
-        //  humidity: readWeather.main.humidity,
-        //};
-        //return h.view("poi", { title: "Make Changes Again", poi: poi, categories: categories, weather: weather }); //, user: user });
+        const poi = await Poi.findById(newPoi.id).lean();
+        const poiid = newPoi.id;
+        //"/poi/{{_id}}"
+        // return h.redirect("/poi/{{poiid}}");
         return h.redirect("/report");
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
@@ -120,9 +137,11 @@ const Pois = {
     handler: async function (request, h) {
       try {
         //const id = request.auth.credentials.id;
-        const poi = await Poi.findById(request.params.id).lean();
+        const poi = await Poi.findById(request.params.id).populate("category").populate("user").lean();
         const latitude = poi.latitude;
         const longitude = poi.longitude;
+        const contributor = poi.contributor;
+        const category = poi.category;
         //const user = await User.findById(id).lean();  //Might use user for last updated by
         const categories = await Category.find().lean();
         const readWeather = await Weather.readWeather(latitude, longitude);
@@ -136,7 +155,14 @@ const Pois = {
           visibility: readWeather.visibility / 1000,
           humidity: readWeather.main.humidity,
         };
-        return h.view("poi", { title: "Make Changes Again", poi: poi, categories: categories, weather: weather }); //, user: user });
+        return h.view("poi", {
+          title: "Make Changes Again",
+          poi: poi,
+          categories: categories,
+          weather: weather,
+          category: category,
+          contributor: contributor,
+        }); //, user: user });
       } catch (err) {
         return h.view("login", { errors: [{ message: err.message }] });
       }

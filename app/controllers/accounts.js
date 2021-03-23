@@ -111,7 +111,17 @@ const Accounts = {
     handler: async function (request, h) {
       const users = await User.find().lean();
       const categories = await Category.find().lean();
-      return h.view("admin", { title: "Admin", users: users, categories: categories });
+      const countUsers = await User.find().countDocuments();
+      const countPois = await Poi.find().countDocuments();
+      const countCategories = await Category.find().countDocuments();
+      return h.view("admin", {
+        title: "Admin",
+        users: users,
+        categories: categories,
+        countUsers: countUsers,
+        countPois: countPois,
+        countCategories: countCategories,
+      });
     },
   },
   showSettings: {
