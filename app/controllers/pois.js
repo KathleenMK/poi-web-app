@@ -267,12 +267,12 @@ const Pois = {
     },
   },
 
-  // deletes an Image, not working
+  // Delete an image NOT IMPLEMENTED
   deleteImage: {
     handler: async function (request, h) {
       try {
         await ImageStore.deleteImage(request.params.id);
-        return h.redirect("/report");
+        return h.redirect("/");
       } catch (err) {
         console.log(err);
       }
