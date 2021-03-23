@@ -2,12 +2,14 @@
     {{> title-card subtitle="Sign up..." }}
     {{> welcome-menu }}
 </div>
+<div class="uk-height-small uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="images/tramore2.jpg" uk-img>
+    <h1>Enter your details and sign up...</h1>
+</div>
 <div class="uk-container uk-margin">
     <div class="uk-child-width-expand uk-flex-center uk-flex-middle uk-text-center" uk-grid>
         <div>
             <div class="uk-card uk-card-default uk-card-body uk-box-shadow-large">
-                <h3 class="uk-card-title uk-text-center">Please enter details below</h3>
-                <form action="/signup" method="POST">
+                 <form action="/signup" method="POST">
                     <div class="uk-margin">
                         <div class="uk-inline uk-width-1-1">
                             <span class="uk-form-icon" uk-icon="icon: user"></span> <input class="uk-input uk-form-large" type="text"

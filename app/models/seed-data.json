@@ -58,107 +58,146 @@
     "_model": "Poi",
     "tramore": {
       "name": "Tramore Beach",
+      "descshort":"Tramore is a seaside town located in the South East, only 13 kilometres south of Waterford city.",
       "description": "Tramore is a seaside town located in the South East, only 13 kilometres south of Waterford city. Tramore is one of the more popular resorts in Ireland. The town is situated on the north-western corner of Tramore Bay on a hill that slopes down to the strand, or sand spit, that divides the bay. Behind the spit lies the tidal lagoon known as the Back Strand.It is a popular resort for tourists in the summer and has 5 kilometres of beach and sand dunes looking out onto the Atlantic Ocean. Most recently Tramore has gained an excellent reputation for surfing and many surfers flock to this destination. Lifeguard times are posted on the beach noticeboard.",
-      "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928635/fy27zgydlsizhiacopkz.jpg",
-      "imagePublicId": "fy27zgydlsizhiacopkz",
+      "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928635/fy27zgydlsizhiacopkz.jpg",
+      "imagepublicid": "fy27zgydlsizhiacopkz",
       "contributor": "->users.kate",
-      "category": "->categories.munster"
+      "category": "->categories.munster",
+      "latitude": "52.15736076779771",
+      "longitude": "-7.13500077023923"
     },
     "tragumna": {
       "name": "Tragumna Beach",
-      "description": "This is a small scenicbeach located in arural area 6km from Skibbereen with marsh and lake in background. It can be reached by turning off the R596 at Abisdealy Bridge and follow sign for Tragumna. This beach is lifeguarded during the bathing season (lifeguard times are displayed on the beach information board).",
-      "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928689/ecosekrebc28zfxgqvqy.jpg",
-      "imagePublicId": "ecosekrebc28zfxgqvqy",
+      "descshort": "This is a small scenic beach located in a rural area 6km from Skibbereen with marsh and lake in background.",
+      "description": "This is a small scenic beach located in a rural area 6km from Skibbereen with marsh and lake in background. It can be reached by turning off the R596 at Abisdealy Bridge and follow sign for Tragumna. This beach is lifeguarded during the bathing season (lifeguard times are displayed on the beach information board).",
+      "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928689/ecosekrebc28zfxgqvqy.jpg",
+      "imagepublicid": "ecosekrebc28zfxgqvqy",
       "contributor": "->users.mike",
-      "category": "->categories.munster"
+      "category": "->categories.munster",
+      "latitude": "51.5008143",
+      "longitude": "-9.2667644"
     },
     "portnoo": {
       "name": "Portnoo /Narin",
-      "description": "An extensive sandy beach in a rural environment. The beach is backed by an extensivesand dune system with a well defined primary dune ridge.The coastal area here is a designated Natural Heritage Area(NHA) exhibiting a highly diverse range of both coastal and terrestrial habitats.The beach at Naran can be found by travellingnorth on the R261 from Ardara andheading towards thevillage of Naran.The beach is lifeguard patrolled during the bathing season (lifeguard patrol times are displayed on the information noticeboard at the beach).",
-      "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928743/ak4jnloy7jlpt82bsx7i.jpg",
-      "imagePublicId": "ak4jnloy7jlpt82bsx7i",
+      "descshort":"An extensive sandy beach in a rural environment.",
+      "description": "An extensive sandy beach in a rural environment. The beach is backed by an extensive sand dune system with a well defined primary dune ridge.The coastal area here is a designated Natural Heritage Area(NHA) exhibiting a highly diverse range of both coastal and terrestrial habitats.The beach at Naran can be found by travellingnorth on the R261 from Ardara andheading towards thevillage of Naran.The beach is lifeguard patrolled during the bathing season (lifeguard patrol times are displayed on the information noticeboard at the beach).",
+      "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928743/ak4jnloy7jlpt82bsx7i.jpg",
+      "imagepublicid": "ak4jnloy7jlpt82bsx7i",
       "contributor": "->users.finn",
-      "category": "->categories.ulster"
+      "category": "->categories.ulster",
+      "latitude": "54.84008353798713",
+      "longitude": "-8.446593403027352"
     },
     "morriscastle": {
       "name": "Morriscastle",
-      "description": "Morriscastle beach is located on the East Coast of County Wexford about6.4 kilometres south of Cahore Point. The beach is a fine sandy beach stretchingapproximately3.2 kilometres in length. It is claimed to be the longest beach in Ireland and is known locally as the ?Golden Mile?. The area is important from a nature point of view with a Special Area of Conservation ? Kilmuckridge / Tinnaberna Sandhills to the South. The Wexford Coastal Pathway passes through Morriscastle on its 221km journey. The beach can be reached by a 150 metre walk from the car park onto the strand. The beach is a very popular for bathing with locals and visitors. The beach is lifeguard patrolled during the bathing season (lifeguard times are displayed on the information noticeboard at the beach).",
-      "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928785/jjuejhp7w34qpwhlpjof.jpg",
-      "imagePublicId": "jjuejhp7w34qpwhlpjof",
+      "descshort":"Morriscastle beach is located on the East Coast of County Wexford about 6.4 kilometres south of Cahore Point.",
+      "description": "Morriscastle beach is located on the East Coast of County Wexford about 6.4 kilometres south of Cahore Point. The beach is a fine sandy beach stretchingapproximately3.2 kilometres in length. It is claimed to be the longest beach in Ireland and is known locally as the ?Golden Mile?. The area is important from a nature point of view with a Special Area of Conservation ? Kilmuckridge / Tinnaberna Sandhills to the South. The Wexford Coastal Pathway passes through Morriscastle on its 221km journey. The beach can be reached by a 150 metre walk from the car park onto the strand. The beach is a very popular for bathing with locals and visitors. The beach is lifeguard patrolled during the bathing season (lifeguard times are displayed on the information noticeboard at the beach).",
+      "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928785/jjuejhp7w34qpwhlpjof.jpg",
+      "imagepublicid": "jjuejhp7w34qpwhlpjof",
       "contributor": "->users.mike",
-      "category": "->categories.leinster"
+      "category": "->categories.leinster",
+      "latitude": "52.50902192090245",
+      "longitude": "-6.241205194042975"
     },
     "greystones": {
       "name": "Greystones",
+      "descshort":"Greystones beach is a mix of pebble and sand andis located at the southern end of thetown of Greystones.",
       "description": "Greystones beach is a mix of pebble and sand andis located at the southern end of thetown of Greystones. The beach isaccessible by public transport, the DART train travels to Greystones from Dublin City centre regularly during the day. Otherwise one can find the beach by travelling south from Dublin on the N11 and taking the exit for the R768 and turning south onto the R761 to Greystones town.Greystones is lifeguarded during the bathing season (lifeguard times are posted on the information noticeboard on the beach).",
-      "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928820/vzrzae72mfjhlqwf8xpn.jpg",
-      "imagePublicId": "vzrzae72mfjhlqwf8xpn",
+      "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928820/vzrzae72mfjhlqwf8xpn.jpg",
+      "imagepublicid": "vzrzae72mfjhlqwf8xpn",
       "contributor": "->users.kate",
-      "category": "->categories.leinster"
+      "category": "->categories.leinster",
+      "latitude": "53.140528986044245",
+      "longitude": "-6.057854578173818"
     },
     "curracloe": {
       "name": "Curracloe",
+      "descshort":"This beach is part of a continuous stretch of wide sandy beach from Raven Point to Ballyconigar near Blackwater.",
       "description": "This beach is part of a continuous stretch of wide sandy beach from Raven Point to Ballyconigar near Blackwater. It is located approximately 10km north east of wexford town in a rural area. The village of Curracloe is located about 1km west of the beach. There are very few buildings located near the beach as a large part of the area surrounding the beach is an Area of Scientific Interest made up of a dune system stretching along the coastline backing the beach itself.This beach is lifeguarded during the bathing season (lifeguard patrol times are displayed on the information noticeboard at the beach).",
-      "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928858/o53pmsb7qb1vsub62ueo.jpg",
-      "imagePublicId": "o53pmsb7qb1vsub62ueo",
+      "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928858/o53pmsb7qb1vsub62ueo.jpg",
+      "imagepublicid": "o53pmsb7qb1vsub62ueo",
       "contributor": "->users.mike",
-      "category": "->categories.leinster"
+      "category": "->categories.leinster",
+      "latitude": "52.38702360794494",
+      "longitude": "-6.358957389721686"
     },
     "inchydoney": {
       "name": "Inchydoney",
-      "description": "Inchydoney is a sandy Beach located on Inchydoney Island a few kilometres from the town ofClonakility. This beach is accessible by car.Public parking and toilets provided adjacent to the beach and lifeguards are on duty during the bathing season (lifeguard times are posted on the information noticeboard on the beach). Toilet facilities for people using a wheelchair are available at the hotel which is located adjacent to the beach.",
-      "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928894/e0siangfwfipsxwabo4h.jpg",
-      "imagePublicId": "e0siangfwfipsxwabo4h",
+      "descshort":"Inchydoney is a sandy Beach located on Inchydoney Island a few kilometres from the town of Clonakility.",
+      "description": "Inchydoney is a sandy Beach located on Inchydoney Island a few kilometres from the town of Clonakility. This beach is accessible by car.Public parking and toilets provided adjacent to the beach and lifeguards are on duty during the bathing season (lifeguard times are posted on the information noticeboard on the beach). Toilet facilities for people using a wheelchair are available at the hotel which is located adjacent to the beach.",
+      "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928894/e0siangfwfipsxwabo4h.jpg",
+      "imagepublicid": "e0siangfwfipsxwabo4h",
       "contributor": "->users.finn",
-      "category": "->categories.munster"
+      "category": "->categories.munster",
+      "latitude": "51.5969081",
+      "longitude": "-8.8647998"
     },
     "ballinskelligs": {
       "name": "Ballinskelligs",
+      "descshort":"Ballinskelligs or Baile na Sceilge is one of the few remaining Irish speaking areas in Kerry.",
       "description": "Ballinskelligs or Baile na Sceilge is one of the few remaining Irish speaking areas in Kerry. This is an extensive sandy beach in a rural environment. The area is a designated Natural heritage area. The beach is located on the western side ofBallinskelligs Harbour, 2km south of the village of Dungeagan located in the Gaelic speaking part of the County. Ballinskelligs is accessible via the N70 from Killarney, then changing to the R566 after Cahirciveen/ before Waterville. The beach is lifeguard patrolled during the bathing season (lifeguard patrol times are displayed on the information noticeboard at the beach).",
-      "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928940/xq95efbeyufxe15exkyg.jpg",
-      "imagePublicId": "xq95efbeyufxe15exkyg",
+      "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928940/xq95efbeyufxe15exkyg.jpg",
+      "imagepublicid": "xq95efbeyufxe15exkyg",
       "contributor": "->users.eve",
-      "category": "->categories.munster"
+      "category": "->categories.munster",
+      "latitude": "51.821626818637014",
+      "longitude": "-10.272687984594721"
     },
     "ventry": {
       "name": "Ventry",
+      "descshort":"Ventry or Ceann Trá in Irish is a sandy beach located in a Natural heritage area rich in flora and fauna",
       "description": "Ventry or Ceann Trá in Irish is a sandy beach located in a Natural heritage area rich in flora and fauna. The beach is situated to the south west of the village of Ventry on the Dingle Peninsula surrounding the sheltered bay of Ventry Harbour.The site comprises of Ventry Strand a small dune system, a small lake, wet grasslands and an extensive Common Reed swamp. Car access is just beyond the village of Ventry. This beach is lifeguarded during the bathing season (lifeguard times are posted on the information noticeboard at the beach).",
-      "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928980/pvozh0ky3bihyrr7hrzf.jpg",
-      "imagePublicId": "pvozh0ky3bihyrr7hrzf",
+      "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928980/pvozh0ky3bihyrr7hrzf.jpg",
+      "imagepublicid": "pvozh0ky3bihyrr7hrzf",
       "contributor": "->users.kate",
-      "category": "->categories.munster"
+      "category": "->categories.munster",
+      "latitude": "52.132062017955654",
+      "longitude": "-10.364144771997061"
     },
     "spanishpoint": {
       "name": "Spanish Point",
-      "description": "The bathing water at Spanish Point is located on the coast of Clare.The bathing area at Spanish Point lies to the west of Milltown Malbay on the road from Quilty to Lahinch. Itis an extensive stretch of sandy beach which forms a straight face onto the open Atlantic sea at Mal Bay.Bathing and surfing are the main activities at Spanish Point.The rocks which stick out into the sea and the rocky shoreline at the northern end of the strand are very interesting places to observe a variety of plants and animals.On the steep, almost vertical face of the reef, the zonation of different animals is clearly apparent with a white band of tiny barnacles occurring above the darker band of mussels. The white dog whelk, which is a carnivorous snail and feeds on mussels, can be seen in the mussel band. Limpets, Red seaweed and Anemones are also present.Bird life in the area include the Redshank, Skylarks, Terns and Dippers.To reach the beach from Milltown Malbay head south on the N67 for 2km, then take\na slight right onto the R482, continue straight on the R482 for approx 500m.",
-      "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615929018/kc6mutnzultucqde4pnf.jpg",
-      "imagePublicId": "kc6mutnzultucqde4pnf",
+      "descshort":"The bathing water at Spanish Point is located on the coast of Clare.",
+      "description": "The bathing water at Spanish Point is located on the coast of Clare. The bathing area at Spanish Point lies to the west of Milltown Malbay on the road from Quilty to Lahinch. Itis an extensive stretch of sandy beach which forms a straight face onto the open Atlantic sea at Mal Bay.Bathing and surfing are the main activities at Spanish Point.The rocks which stick out into the sea and the rocky shoreline at the northern end of the strand are very interesting places to observe a variety of plants and animals.On the steep, almost vertical face of the reef, the zonation of different animals is clearly apparent with a white band of tiny barnacles occurring above the darker band of mussels. The white dog whelk, which is a carnivorous snail and feeds on mussels, can be seen in the mussel band. Limpets, Red seaweed and Anemones are also present.Bird life in the area include the Redshank, Skylarks, Terns and Dippers.To reach the beach from Milltown Malbay head south on the N67 for 2km, then take\na slight right onto the R482, continue straight on the R482 for approx 500m.",
+      "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615929018/kc6mutnzultucqde4pnf.jpg",
+      "imagepublicid": "kc6mutnzultucqde4pnf",
       "contributor": "->users.kate",
-      "category": "->categories.munster"
+      "category": "->categories.munster",
+      "latitude": "52.8466428",
+      "longitude": "-9.439701499999956"
     },
     "inverin": {
       "name": "An Trá Mhór (Inverin)",
-      "description": "An Trá Mhóris asandy beach in a rural, Irish speaking area. Take the R336 from Galway city. This beach is in the townland of Indreabhán.Trá Mhór Choill Rua is lifeguarded during the bathing season (lifeguard patrol times are displayed on the information noticeboard at the beach).",
-      "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615929057/j3akwinfojmyhkl4catt.jpg",
-      "imagePublicId": "j3akwinfojmyhkl4catt",
+      "descshort":"An Trá Mhóris a sandy beach in a rural, Irish speaking area. Take the R336 from Galway city",
+      "description": "An Trá Mhóris a sandy beach in a rural, Irish speaking area. Take the R336 from Galway city. This beach is in the townland of Indreabhán.Trá Mhór Choill Rua is lifeguarded during the bathing season (lifeguard patrol times are displayed on the information noticeboard at the beach).",
+      "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615929057/j3akwinfojmyhkl4catt.jpg",
+      "imagepublicid": "j3akwinfojmyhkl4catt",
       "contributor": "->users.mike",
-      "category": "->categories.connaught"
+      "category": "->categories.connaught",
+      "latitude": "53.22849488631776",
+      "longitude": "-9.457884677246104"
     },
     "clareisland": {
       "name": "Clare Island",
-      "description": "This is a sandy, rural beach located on an island offthe coast of Mayo in the west of Ireland. Visitors can visit the island by crossing the ferry from Roonagh Pier. Roonagh Pier is approx. 6 miles from Louisburgh and 18 miles form Westport.The island has a small population of approx. 250. The beach is located very near the pier. All boats arriving to the island must berth at this pier.Lifeguards are not on duty during the bathing season but lifebuoys are provided on the beach.",
-      "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615929099/qzozpbj35ohx8pxntzcv.jpg",
-      "imagePublicId": "qzozpbj35ohx8pxntzcv",
+      "descshort":"This is a sandy, rural beach located on an island off the coast of Mayo in the west of Ireland.",
+      "description": "This is a sandy, rural beach located on an island off the coast of Mayo in the west of Ireland. Visitors can visit the island by crossing the ferry from Roonagh Pier. Roonagh Pier is approx. 6 miles from Louisburgh and 18 miles form Westport.The island has a small population of approx. 250. The beach is located very near the pier. All boats arriving to the island must berth at this pier.Lifeguards are not on duty during the bathing season but lifebuoys are provided on the beach.",
+      "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615929099/qzozpbj35ohx8pxntzcv.jpg",
+      "imagepublicid": "qzozpbj35ohx8pxntzcv",
       "contributor": "->users.finn",
-      "category": "->categories.connaught"
+      "category": "->categories.connaught",
+      "latitude": "53.79994049683822",
+      "longitude": "-9.951119272155754"
     },
     "templetown": {
       "name": "Shellinghill/Templetown",
-      "description": "Shellinghill/Templetown, called after the crusading \"Knights Templar\", fronts one of Louth's most popularstretch of coastline. Protected on each side by alow level rock promontory, its smooth safe sandsextends its friendly playground tocuriousunderwater marine lifeand to numerous local and day trippers. The sand and shingle beach faces southward andis manned by lifeguardsduring the bathing season (lifeguard patrol times are posted on the information noticeboard located at the beach). The beach is located north of Dundalk towards the Ballymascanlon roundabout, at the roundabout take the exit for Carlingford and Greenore (R173). ",
-      "imageUrl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615929140/rr2eldolpdnaanfueqvd.jpg",
-      "imagePublicId": "rr2eldolpdnaanfueqvd",
+      "descshort":"Shellinghill/Templetown, called after the crusading \"Knights Templar\", fronts one of Louth's most popular stretch of coastline.",
+      "description": "Shellinghill/Templetown, called after the crusading \"Knights Templar\", fronts one of Louth's most popular stretch of coastline. Protected on each side by alow level rock promontory, its smooth safe sandsextends its friendly playground tocuriousunderwater marine lifeand to numerous local and day trippers. The sand and shingle beach faces southward andis manned by lifeguardsduring the bathing season (lifeguard patrol times are posted on the information noticeboard located at the beach). The beach is located north of Dundalk towards the Ballymascanlon roundabout, at the roundabout take the exit for Carlingford and Greenore (R173). ",
+      "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615929140/rr2eldolpdnaanfueqvd.jpg",
+      "imagepublicid": "rr2eldolpdnaanfueqvd",
       "contributor": "->users.eve",
-      "category": "->categories.leinster"
+      "category": "->categories.leinster",
+      "latitude": "53.97980199328845",
+      "longitude": "-6.152871964001458"
     }
   }
 }

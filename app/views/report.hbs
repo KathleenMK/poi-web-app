@@ -2,11 +2,15 @@
     {{> title-card subtitle=""}}
     {{> main-menu }}
 </div>
-{{> category-list}}
-<div class="uk-container uk-margin">
-    <div class="uk-child-width-expand uk-flex-center uk-flex-middle uk-text-center" uk-grid>
-        <div class="uk-width-expand@m">
-            {{> poi-list}}
-        </div>
+<div>
+    {{> analytics-header }}
+</div>
+
+<div class="uk-text-center" uk-grid>
+    <div class="uk-width-auto@m">
+        <div class="uk-card uk-card-default uk-card-body">{{> category-list}}</div>
+    </div>
+    <div class="uk-width-expand@m">
+        <div class="uk-card uk-card-default uk-card-body">{{> poi-list}}</div>
     </div>
 </div>

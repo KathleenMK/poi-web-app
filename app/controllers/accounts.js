@@ -8,6 +8,7 @@ const Poi = require("../models/poi");
 const Category = require("../models/category");
 
 const Accounts = {
+  // main displays the POI images
   index: {
     auth: false,
     handler: async function (request, h) {
@@ -16,15 +17,18 @@ const Accounts = {
         title: "Beaches",
         pois: pois,
       });
-      //return h.view("main", { title: "Beaches" });
     },
   },
+
+  // Sigup form
   showSignup: {
     auth: false,
     handler: function (request, h) {
       return h.view("signup", { title: "Join Us" });
     },
   },
+
+  // Validates the sign up inputs and creates a new user
   signup: {
     auth: false,
     validate: {
@@ -70,12 +74,16 @@ const Accounts = {
       }
     },
   },
+
+  // Login form
   showLogin: {
     auth: false,
     handler: function (request, h) {
       return h.view("login", { title: "Login" });
     },
   },
+
+  // Validates login inputs and continues into the app
   login: {
     auth: false,
     handler: async function (request, h) {
@@ -100,6 +108,8 @@ const Accounts = {
       }
     },
   },
+
+  //logout
   logout: {
     //auth: false,
     handler: function (request, h) {
@@ -107,13 +117,27 @@ const Accounts = {
       return h.redirect("/");
     },
   },
+
+  //admin user dashboard
   admin: {
     handler: async function (request, h) {
       const users = await User.find().lean();
       const categories = await Category.find().lean();
-      return h.view("admin", { title: "Our Users", users: users, categories: categories });
+      const countUsers = await User.find().countDocuments();
+      const countPois = await Poi.find().countDocuments();
+      const countCategories = await Category.find().countDocuments();
+      return h.view("admin", {
+        title: "Admin",
+        users: users,
+        categories: categories,
+        countUsers: countUsers,
+        countPois: countPois,
+        countCategories: countCategories,
+      });
     },
   },
+
+  // show user setting for update
   showSettings: {
     handler: async function (request, h) {
       try {
@@ -125,6 +149,8 @@ const Accounts = {
       }
     },
   },
+
+  // validates and updates settings for a user
   updateSettings: {
     validate: {
       payload: {
@@ -156,18 +182,18 @@ const Accounts = {
         user.email = userEdit.email;
         user.password = userEdit.password;
         await user.save();
-        return h.redirect("/settings");
+        return h.redirect("/report");
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
       }
     },
   },
+
+  // admin user can delete a user
   delete: {
     handler: async function (request, h) {
       try {
-        //const removePoi =
         await User.findByIdAndDelete(request.params.id); //is used to find a matching document, removes it, and passing the found document (if any) to the callback. https://www.geeksforgeeks.org/mongoose-findbyidanddelete-function/ 13Mar21
-        //await Poi.findByIdAndDelete()
         return h.redirect("/admin");
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });

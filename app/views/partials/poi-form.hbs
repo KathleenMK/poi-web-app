@@ -1,14 +1,37 @@
-<form action="/poi/{{poi._id}}" method="POST">
+<div class="uk-card uk-card-small uk-card-secondary uk-card-body">
+    <h3 class="uk-card-title">Edit POI:</h3>
+<form class="uk-form-stacked" action="/poi/{{poi._id}}" method="POST">
     <div class="uk-margin">
-        <div class="uk-inline uk-width-1-1">
-            <span class="uk-form-icon" uk-icon="icon: user"></span>
-            <input class="uk-input uk-form-large" type="text" name="name" value="{{poi.name}}">
+        <label class="uk-form-label" for="form-stacked-text">Name</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-stacked-text" type="text" name="name" value="{{poi.name}}">
         </div>
     </div>
     <div class="uk-margin">
-        <span class="uk-form-icon" uk-icon="icon: user"></span>
-        <input class="uk-input uk-form-large" type="text" name="description" value="{{poi.description}}">
+        <label class="uk-form-label" for="form-stacked-text">Short Description</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-stacked-text" type="text" name="descshort" value="{{poi.descshort}}">
+        </div>
     </div>
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-text">Description</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-stacked-text" type="text" name="description" value="{{poi.description}}">
+        </div>
+    </div>
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-text">Latitude</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-stacked-text" type="number" step="any" name="latitude" value="{{poi.latitude}}">
+        </div>
+    </div>
+    <div class="uk-margin">
+        <label class="uk-form-label" for="form-stacked-text">Longitude</label>
+        <div class="uk-form-controls">
+            <input class="uk-input" id="form-stacked-text" type="text" name="longitude" value="{{poi.longitude}}">
+        </div>
+    </div>
+
     <div class="uk-margin">
         <div class="uk-form-label">Select a Category</div>
         <div class="uk-form-controls uk-form-controls-text">
@@ -21,6 +44,5 @@
         <button class="uk-button uk-button-primary uk-button-large uk-width-1-1">Update </button>
     </div>
 </form>
-
-{{> upload }}
+</div>
 {{> error }}
