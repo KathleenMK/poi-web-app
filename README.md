@@ -51,3 +51,14 @@
 - secret=cloudinary-secret
 - apiKey=openweather-apikey
 
+## To run locally:
+- git clone the repository
+- run npm install
+- the .env file variables, as above, should be assigned values
+- the index.js file server declaration should be updated to the localhost as follows:<br>
+const server = Hapi.server({
+  port: 3000,
+  host: 'localhost',
+});
+- the package.json file updated to remove the following entry from the scripts section:<br>
+"start": "node index.js"
