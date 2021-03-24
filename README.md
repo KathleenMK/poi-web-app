@@ -1,11 +1,11 @@
-###A Web Application that manages Points of Interest, specifically beaches
+## A Web Application that manages Points of Interest, specifically beaches
 
-##Deployed app on:
-###Heroku: [HerokuLinkTBC](https://github.com/KathleenMK/poi-web-app)
-###&
-###Glitch: [GlitchLinkTBC](https://github.com/KathleenMK/poi-web-app)
+### Deployed app on:
+### [Heroku](https://lit-hamlet-10675.herokuapp.com/)
+###   &
+### [Glitch](https://attractive-pouncing-dove.glitch.me/)
 
-##Features of the app are:
+## Features of the app are:
 
 -  Sign up or login as a user
 -  Create, read, update and delete points
@@ -14,7 +14,7 @@
 -  Display the current weather, based on the latitude and longitude, using an OpenWeather API
 -  Administrator login, can delete users and categories
 
-##Technology Stack:
+## Technology Stack:
 
 - __UI:__
   - handlebars 
@@ -40,15 +40,14 @@
   - cloudatlas
   - glitch
 
-##The .env file contains the following variables:
+## The .env file contains the following variables:
+(values should be included to run locally or as config variables if deployed)
 
 - cookie_name=cookie_name
 - cookie_password=cookie_password
-- db=cloudatlas-connection-string <br>
-<br>
+- db=cloudatlas-connection-string
 - name=cloudinary-name
 - key=cloudinary-key
-- secret=cloudinary-secret <br>
-<br>
+- secret=cloudinary-secret
 - apiKey=openweather-apikey
 
