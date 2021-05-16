@@ -5,25 +5,25 @@
       "firstName": "Kate",
       "lastName": "Power",
       "email": "kate@gmail.com",
-      "password": "kate"
+      "password": "$2a$10$D6uRhaU70PJ7Ql6SZQU33e.kdiBDsEg4Aa7Vs9.T1qjQru0M.lTDi"
     },
     "mike": {
       "firstName": "Mike",
       "lastName": "Power",
       "email": "mike@gmail.com",
-      "password": "mike"
+      "password": "$2a$10$86o8pUYfobf5V7hnHbjNLOAhsAwskKYSuTqmDJ1xEsFa28f8o3Rp."
     },
     "finn": {
       "firstName": "Finn",
       "lastName": "Power",
       "email": "finn@gmail.com",
-      "password": "finn"
+      "password": "$2a$10$d3PCZrnTv.blR3t4O8y6XO1t3Hi9IRsM6bYL/mbgykT16Asj0rpg6"
     },
     "eve": {
       "firstName": "Eve",
       "lastName": "Power",
       "email": "eve@gmail.com",
-      "password": "eve"
+      "password": "$2a$10$lDh4pDRbPn8YkWpeJVdkDupjaG0b2NjpmtodqUsIcO2S5dacR.vZG"
     }
   },
   "adminusers": {
@@ -32,7 +32,7 @@
       "firstName": "Admin",
       "lastName": "",
       "email": "admin@gmail.com",
-      "password": "admin"
+      "password": "$2a$10$moP2iC4xeFWbk0MZIn7Ai.zuZhKTkMFbN42nidnN2.7Zpgw7K6q22"
     }
   },
   "categories": {
