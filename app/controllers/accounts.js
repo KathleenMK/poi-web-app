@@ -7,6 +7,8 @@ const AdminUser = require("../models/adminuser");
 const Poi = require("../models/poi");
 const Category = require("../models/category");
 const sanitizeHtml = require("sanitize-html");
+const bcrypt = require("bcrypt"); //added for password security
+const saltRounds = 13;
 
 const Accounts = {
   // main displays the POI images
@@ -35,10 +37,10 @@ const Accounts = {
     validate: {
       payload: {
         firstName: Joi.string()
-          .regex(/^[A-Z][a-z]{1+}$/) //must start with a capital letter, followed by 1 or more lowercase letters
+          .regex(/^[A-Z][a-z]{1,}$/) //must start with a capital letter, followed by 1 or more lowercase letters
           .required(),
         lastName: Joi.string()
-          .regex(/^[A-Z][A-Za-z -']{1+}/) //must start with a capital letter, followed by 1 or more of: letters of either case; spaces, hyphens or apostrophes
+          .regex(/^[A-Z][A-Za-z -']{1,}/) //must start with a capital letter, followed by 1 or more of: letters of either case; spaces, hyphens or apostrophes
           .required(),
         email: Joi.string().email().required(),
         password: Joi.string()
@@ -70,11 +72,12 @@ const Accounts = {
           const message = "Email address is already registered";
           throw Boom.badData(message);
         }
+        const hash = await bcrypt.hash(payload.password, saltRounds); // Added to hash and salt the password that has been input
         const newUser = new User({
           firstName: sanitizeHtml(payload.firstName),
           lastName: sanitizeHtml(payload.lastName),
           email: payload.email,
-          password: payload.password,
+          password: hash, //hash as calculated above
         });
         user = await newUser.save();
         request.cookieAuth.set({ id: user.id });
@@ -106,7 +109,7 @@ const Accounts = {
             const message = "Email address is not registered";
             throw Boom.unauthorized(message);
           }
-          adminUser.comparePassword(password);
+          await adminUser.comparePassword(password);
           request.cookieAuth.set({ id: adminUser.id });
           return h.redirect("/admin");
         }
@@ -165,10 +168,10 @@ const Accounts = {
     validate: {
       payload: {
         firstName: Joi.string()
-          .regex(/^[A-Z][a-z]{1+}$/) //must start with a capital letter, followed by 1 or more lowercase letters
+          .regex(/^[A-Z][a-z]{1,}$/) //must start with a capital letter, followed by 1 or more lowercase letters
           .required(),
         lastName: Joi.string()
-          .regex(/^[A-Z][A-Za-z -']{1+}/) //must start with a capital letter, followed by 1 or more of: letters of either case; spaces, hyphens or apostrophes
+          .regex(/^[A-Z][A-Za-z -']{1,}/) //must start with a capital letter, followed by 1 or more of: letters of either case; spaces, hyphens or apostrophes
           .required(),
         email: Joi.string().email().required(),
         password: Joi.string()
@@ -199,7 +202,11 @@ const Accounts = {
         user.firstName = sanitizeHtml(userEdit.firstName);
         user.lastName = sanitizeHtml(userEdit.lastName);
         user.email = userEdit.email;
-        user.password = userEdit.password;
+        if (user.password !== userEdit.password) {
+          //only if the user password has been changed should it be hashed, otherwise hashing an already hashed value
+          const hash = await bcrypt.hash(userEdit.password, saltRounds); // Added to hash and salt the password that has been input
+          user.password = hash;
+        }
         await user.save();
         return h.redirect("/report");
       } catch (err) {
