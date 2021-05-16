@@ -40,18 +40,33 @@
     "email": "maggie@simpson.com",
     "password": "secret"
   },
-  "donations": [
+  "pois": [
     {
-      "amount": 40,
-      "method": "paypal"
+      "name": "Test POI 1",
+      "descshort": "This is a small scenic beach located in a rural area 6km from Skibbereen with marsh and lake in background.",
+      "description": "This is a small scenic beach located in a rural area 6km from Skibbereen with marsh and lake in background. It can be reached by turning off the R596 at Abisdealy Bridge and follow sign for Tragumna. This beach is lifeguarded during the bathing season (lifeguard times are displayed on the beach information board).",
+      "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928689/ecosekrebc28zfxgqvqy.jpg",
+      "imagepublicid": "ecosekrebc28zfxgqvqy",
+      "latitude": 51.5008143,
+      "longitude": -9.2667644
     },
     {
-      "amount": 90,
-      "method": "direct"
+      "name": "Test POI 2",
+      "descshort": "This is a small scenic beach located in a rural area 6km from Skibbereen with marsh and lake in background.",
+      "description": "This is a small scenic beach located in a rural area 6km from Skibbereen with marsh and lake in background. It can be reached by turning off the R596 at Abisdealy Bridge and follow sign for Tragumna. This beach is lifeguarded during the bathing season (lifeguard times are displayed on the beach information board).",
+      "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928689/ecosekrebc28zfxgqvqy.jpg",
+      "imagepublicid": "ecosekrebc28zfxgqvqy",
+      "latitude": 51.5008143,
+      "longitude": -9.2667644
     },
     {
-      "amount": 430,
-      "method": "paypal"
+      "name": "Test POI 3",
+      "descshort": "This is a small scenic beach located in a rural area 6km from Skibbereen with marsh and lake in background.",
+      "description": "This is a small scenic beach located in a rural area 6km from Skibbereen with marsh and lake in background. It can be reached by turning off the R596 at Abisdealy Bridge and follow sign for Tragumna. This beach is lifeguarded during the bathing season (lifeguard times are displayed on the beach information board).",
+      "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928689/ecosekrebc28zfxgqvqy.jpg",
+      "imagepublicid": "ecosekrebc28zfxgqvqy",
+      "latitude": 51.5008143,
+      "longitude": -9.2667644
     }
   ]
 }

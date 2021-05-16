@@ -96,34 +96,32 @@ class PoiService {
       return null;
     }
   }
-  /*
-  async makeDonation(id, donation) {
+  async addPoi(id, poi) {
     try {
-      const response = await axios.post(this.baseUrl + "/api/categories/" + id + "/donations", donation);
+      const response = await axios.post(this.baseUrl + "/api/categories/" + id + "/pois", poi);
       return response.data;
     } catch (e) {
       return null;
     }
   }
 
-  async getDonations(id) {
+  async getPois(id) {
     try {
-      const response = await axios.get(this.baseUrl + "/api/categories/" + id + "/donations");
+      const response = await axios.get(this.baseUrl + "/api/categories/" + id + "/pois");
       return response.data;
     } catch (e) {
       return null;
     }
   }
 
-  async deleteAllDonations() {
+  async deleteAllPois() {
     try {
-      const response = await axios.delete(this.baseUrl + "/api/donations");
+      const response = await axios.delete(this.baseUrl + "/api/pois");
       return response.data;
     } catch (e) {
       return null;
     }
   }
-  */
 }
 
 module.exports = PoiService;

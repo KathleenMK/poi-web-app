@@ -1,6 +1,6 @@
 const Categories = require("./app/api/categories");
 const Users = require("./app/api/users");
-//const Donations = require("./app/api/donations");
+const Pois = require("./app/api/pois");
 
 module.exports = [
   { method: "GET", path: "/api/categories", config: Categories.find },
@@ -16,10 +16,10 @@ module.exports = [
   { method: "DELETE", path: "/api/users", config: Users.deleteAll },
   { method: "PUT", path: "/api/users/{id}", config: Users.update },
 
-  //{ method: "GET", path: "/api/donations", config: Donations.findAll },
-  //{ method: "GET", path: "/api/candidates/{id}/donations", config: Donations.findByCandidate },
-  //{ method: "POST", path: "/api/candidates/{id}/donations", config: Donations.makeDonation },
-  //{ method: "DELETE", path: "/api/donations", config: Donations.deleteAll },
+  { method: "GET", path: "/api/pois", config: Pois.findAll },
+  { method: "GET", path: "/api/categories/{id}/pois", config: Pois.findByCategory },
+  { method: "POST", path: "/api/categories/{id}/pois", config: Pois.addPoi },
+  { method: "DELETE", path: "/api/pois", config: Pois.deleteAll },
 
   { method: "POST", path: "/api/users/authenticate", config: Users.authenticate },
 ];
