@@ -6,6 +6,7 @@ const Joi = require("@hapi/joi");
 const AdminUser = require("../models/adminuser");
 const Poi = require("../models/poi");
 const Category = require("../models/category");
+const sanitizeHtml = require("sanitize-html");
 
 const Accounts = {
   // main displays the POI images
@@ -33,10 +34,19 @@ const Accounts = {
     auth: false,
     validate: {
       payload: {
-        firstName: Joi.string().required(),
-        lastName: Joi.string().required(),
+        firstName: Joi.string()
+          .regex(/^[A-Z][a-z]{1+}$/) //must start with a capital letter, followed by 1 or more lowercase letters
+          .required(),
+        lastName: Joi.string()
+          .regex(/^[A-Z][A-Za-z -']{1+}/) //must start with a capital letter, followed by 1 or more of: letters of either case; spaces, hyphens or apostrophes
+          .required(),
         email: Joi.string().email().required(),
-        password: Joi.string().required(),
+        password: Joi.string()
+          .regex(/[A-Z]{1,}/) //password must contain at least 1 upper case letter
+          .regex(/[a-z]{1,}/) //password must contain at least 1 lower case letter
+          .regex(/[0-9]{1,}/) //password must contain at least 1 digit
+          .regex(/[A-Za-z0-9]{7,30}/) //password minimum of 7, max of 30
+          .required(),
       },
       options: {
         abortEarly: false,
@@ -61,8 +71,8 @@ const Accounts = {
           throw Boom.badData(message);
         }
         const newUser = new User({
-          firstName: payload.firstName,
-          lastName: payload.lastName,
+          firstName: sanitizeHtml(payload.firstName),
+          lastName: sanitizeHtml(payload.lastName),
           email: payload.email,
           password: payload.password,
         });
@@ -154,10 +164,19 @@ const Accounts = {
   updateSettings: {
     validate: {
       payload: {
-        firstName: Joi.string().required(),
-        lastName: Joi.string().required(),
+        firstName: Joi.string()
+          .regex(/^[A-Z][a-z]{1+}$/) //must start with a capital letter, followed by 1 or more lowercase letters
+          .required(),
+        lastName: Joi.string()
+          .regex(/^[A-Z][A-Za-z -']{1+}/) //must start with a capital letter, followed by 1 or more of: letters of either case; spaces, hyphens or apostrophes
+          .required(),
         email: Joi.string().email().required(),
-        password: Joi.string().required(),
+        password: Joi.string()
+          .regex(/[A-Z]{1,}/) //password must contain at least 1 upper case letter
+          .regex(/[a-z]{1,}/) //password must contain at least 1 lower case letter
+          .regex(/[0-9]{1,}/) //password must contain at least 1 digit
+          .regex(/[A-Za-z0-9]{7,30}/) //password minimum of 7, max of 30
+          .required(),
       },
       options: {
         abortEarly: false,
@@ -177,8 +196,8 @@ const Accounts = {
         const userEdit = request.payload;
         const id = request.auth.credentials.id;
         const user = await User.findById(id);
-        user.firstName = userEdit.firstName;
-        user.lastName = userEdit.lastName;
+        user.firstName = sanitizeHtml(userEdit.firstName);
+        user.lastName = sanitizeHtml(userEdit.lastName);
         user.email = userEdit.email;
         user.password = userEdit.password;
         await user.save();

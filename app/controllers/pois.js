@@ -8,6 +8,7 @@ const cloudinary = require("cloudinary");
 const ImageStore = require("../utils/image-store");
 const Category = require("../models/category");
 const Weather = require("../utils/weather");
+const sanitizeHtml = require("sanitize-html");
 
 const Pois = {
   //form to add a POI
@@ -60,11 +61,17 @@ const Pois = {
   add: {
     validate: {
       payload: {
-        name: Joi.string().required(),
-        descshort: Joi.string().required(),
-        description: Joi.string().required(),
-        latitude: Joi.number().required(),
-        longitude: Joi.number().required(),
+        name: Joi.string()
+          .regex(/[A-Za-z -'.]{1+}/)
+          .required(),
+        descshort: Joi.string()
+          .regex(/[A-Za-z -'.]{1+}/)
+          .required(),
+        description: Joi.string()
+          .regex(/[A-Za-z -'.]{1+}/)
+          .required(),
+        latitude: Joi.number().max(90).min(-90).required(),
+        longitude: Joi.number().max(180).min(-180).required(),
         category: Joi.required(),
       },
       options: {
@@ -88,9 +95,9 @@ const Pois = {
         const category = await Category.findById(data.category);
         console.log(data);
         const newPoi = new Poi({
-          name: data.name,
-          descshort: data.descshort,
-          description: data.description,
+          name: sanitizeHtml(data.name),
+          descshort: sanitizeHtml(data.descshort),
+          description: sanitizeHtml(data.description),
           category: data.category,
           contributor: user._id,
           latitude: data.latitude,
@@ -115,12 +122,34 @@ const Pois = {
 
   // Users can add a category
   categoryAdd: {
+    validate: {
+      payload: {
+        name: Joi.string()
+          .regex(/[A-Za-z -'.]{1+}/)
+          .required(),
+        description: Joi.string()
+          .regex(/[A-Za-z -'.]{1+}/)
+          .required(),
+      },
+      options: {
+        abortEarly: false,
+      },
+      failAction: function (request, h, error) {
+        return h
+          .view("category", {
+            title: "error",
+            errors: error.details,
+          })
+          .takeover()
+          .code(400);
+      },
+    },
     handler: async function (request, h) {
       try {
         const data = request.payload;
         const newCategory = new Category({
-          name: data.name,
-          description: data.description,
+          name: sanitizeHtml(data.name),
+          description: sanitizeHtml(data.description),
         });
         await newCategory.save();
         return h.redirect("/report");
@@ -184,12 +213,18 @@ const Pois = {
   update: {
     validate: {
       payload: {
-        name: Joi.string().required(),
-        descshort: Joi.string().required(),
-        description: Joi.string().required(),
+        name: Joi.string()
+          .regex(/[A-Za-z -'.]{1+}/)
+          .required(),
+        descshort: Joi.string()
+          .regex(/[A-Za-z -'.]{1+}/)
+          .required(),
+        description: Joi.string()
+          .regex(/[A-Za-z -'.]{1+}/)
+          .required(),
+        latitude: Joi.number().max(90).min(-90).required(),
+        longitude: Joi.number().max(180).min(-180).required(),
         category: Joi.required(),
-        latitude: Joi.number().required(),
-        longitude: Joi.number().required(),
         //contributor: Joi.string().required(),
       },
       options: {
@@ -210,9 +245,9 @@ const Pois = {
         const poiEdit = request.payload;
         const category = await Category.findById(poiEdit.category);
         const poi = await Poi.findByIdAndUpdate(request.params.id, {
-          name: poiEdit.name,
-          descshort: poiEdit.descshort,
-          description: poiEdit.description,
+          name: sanitizeHtml(poiEdit.name),
+          descshort: sanitizeHtml(poiEdit.descshort),
+          description: sanitizeHtml(poiEdit.description),
           category: poiEdit.category,
           latitude: poiEdit.latitude,
           longitude: poiEdit.longitude,
