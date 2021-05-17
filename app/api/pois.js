@@ -3,38 +3,49 @@
 const Poi = require("../models/poi");
 const Category = require("../models/category");
 const Boom = require("@hapi/boom");
+const utils = require("./utils.js");
 
 const Pois = {
   findAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       const pois = await Poi.find();
       return pois;
     },
   },
   findByCategory: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       const pois = await Poi.find({ category: request.params.id });
       return pois;
     },
   },
   addPoi: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
+      const userId = utils.getUserIdFromRequest(request);
       let poi = new Poi(request.payload);
       const category = await Category.findOne({ _id: request.params.id });
       if (!category) {
         return Boom.notFound("No Category found with this id");
       }
       poi.category = category._id;
+      poi.contributor = userId;
       poi = await poi.save();
       return poi;
     },
   },
 
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       await Poi.deleteMany({});
       return { success: true };
