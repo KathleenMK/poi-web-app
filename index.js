@@ -30,8 +30,7 @@ const credentials = {
 //env.config();
 
 const server = Hapi.server({
-  port: 4000,
-  host: "localhost", //should it be port: process.env.PORT || 4000, lab11a
+  port: process.env.PORT || 3000,
   routes: { cors: true },
 });
 
