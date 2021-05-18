@@ -93,7 +93,7 @@ const Users = {
         const user = await User.findOne({ email: request.payload.email });
         if (!user) {
           return Boom.unauthorized("User not found");
-        } else if (user.password !== request.payload.password) {
+        } else if (!user.comparePassword(request.payload.password)) {
           return Boom.unauthorized("Invalid password");
         } else {
           const token = utils.createToken(user);
@@ -112,7 +112,7 @@ const Users = {
         const user = await User.findOne({ email: request.payload.email });
         if (!user) {
           return Boom.unauthorized("User not found");
-        } else if (user.password !== request.payload.password) {
+        } else if (!user.comparePassword(request.payload.password)) {
           return Boom.unauthorized("Invalid password");
         } else {
           return user;
