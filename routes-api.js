@@ -17,9 +17,11 @@ module.exports = [
   { method: "PUT", path: "/api/users/{id}", config: Users.update },
 
   { method: "GET", path: "/api/pois", config: Pois.findAll },
+  { method: "GET", path: "/api/pois/{id}", config: Pois.findOne },
   { method: "GET", path: "/api/categories/{id}/pois", config: Pois.findByCategory },
   { method: "POST", path: "/api/categories/{id}/pois", config: Pois.addPoi },
   { method: "DELETE", path: "/api/pois", config: Pois.deleteAll },
+  { method: "DELETE", path: "/api/pois/{id}", config: Pois.deleteOne },
 
   { method: "POST", path: "/api/users/authenticate", config: Users.authenticate },
 ];

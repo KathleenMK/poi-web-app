@@ -11,10 +11,21 @@ const Pois = {
       strategy: "jwt",
     },
     handler: async function (request, h) {
-      const pois = await Poi.find();
+      const pois = await Poi.find().populate("contributor").populate("category");
       return pois;
     },
   },
+
+  findOne: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      const poi = await Poi.findOne({ _id: request.params.id }); //find().populate("contributor").populate("category");
+      return poi;
+    },
+  },
+
   findByCategory: {
     auth: {
       strategy: "jwt",
@@ -49,6 +60,20 @@ const Pois = {
     handler: async function (request, h) {
       await Poi.deleteMany({});
       return { success: true };
+    },
+  },
+
+  deleteOne: {
+    auth: false,
+    //{
+    //  strategy: "jwt",
+    //},
+    handler: async function (request, h) {
+      const poi = await Poi.deleteOne({ _id: request.params.id });
+      if (poi) {
+        return { success: true };
+      }
+      return Boom.notFound("id not found");
     },
   },
 };

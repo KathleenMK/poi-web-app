@@ -3,6 +3,8 @@
 const User = require("../models/user");
 const Boom = require("@hapi/boom");
 const utils = require("./utils.js");
+const bcrypt = require("bcrypt"); //added for password security
+const saltRounds = 13;
 
 const Users = {
   find: {
@@ -20,6 +22,7 @@ const Users = {
       strategy: "jwt",
     },
     handler: async function (request, h) {
+      console.log("in findOne handler users.js");
       try {
         const user = await User.findOne({ _id: request.params.id });
         if (!user) {
@@ -31,11 +34,26 @@ const Users = {
       }
     },
   },
+  /*
+  const hash = await bcrypt.hash(payload.password, saltRounds); // Added to hash and salt the password that has been input
+  const newUser = new User({
+    firstName: sanitizeHtml(payload.firstName),
+    lastName: sanitizeHtml(payload.lastName),
+    email: payload.email,
+    password: hash, //hash as calculated above
+  });
+  */
 
   create: {
     auth: false,
     handler: async function (request, h) {
-      const newUser = new User(request.payload);
+      const hash = await bcrypt.hash(request.payload.password, saltRounds); // Added to hash and salt the password that has been input
+      const newUser = new User({
+        firstName: request.payload.firstName,
+        lastName: request.payload.lastName,
+        email: request.payload.email,
+        password: hash, //hash as calculated above
+      });
       const user = await newUser.save();
       if (user) {
         return h.response(user).code(201);
@@ -90,6 +108,7 @@ const Users = {
     auth: false,
     handler: async function (request, h) {
       try {
+        console.log("in authenticate users.js");
         const user = await User.findOne({ email: request.payload.email });
         if (!user) {
           return Boom.unauthorized("User not found");

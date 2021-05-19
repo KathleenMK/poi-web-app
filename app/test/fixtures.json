@@ -1,23 +1,23 @@
 {
-  "poiService": "http://localhost:3000",
+  "poiService": "http://localhost:4000",
   "users": [
     {
       "firstName": "Homer",
       "lastName": "Simpson",
       "email": "homer@simpson.com",
-      "password": "$2a$10$srl6afqdMQANHMRKR8I9cuTf03qKGsiH2tuAclYH9/G7ps86GRPvC"
+      "password": "secret"
     },
     {
       "firstName": "Marge",
       "lastName": "Simpson",
       "email": "marge@simpson.com",
-      "password": "$2a$10$o7pjNjhlwh1.w9k4KOQom.cjUBBXGkP8bUUjOkDFnuFMO/GRljjD6"
+      "password": "secret"
     },
     {
       "firstName": "Bart",
       "lastName": "Simpson",
       "email": "bart@simpson.com",
-      "password": "$2a$10$pnwajcDuMDup8./PRG5qQ.rTWhAGzaCXfQZ2MSeQFdi3w1pbiRYO6"
+      "password": "secret"
     }
   ],
   "categories": [
