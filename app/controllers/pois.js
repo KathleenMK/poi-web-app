@@ -62,13 +62,13 @@ const Pois = {
     validate: {
       payload: {
         name: Joi.string()
-          .regex(/[A-Za-z -'.]{1+}/)
+          .regex(/[A-Za-z -'.]{1,}/)
           .required(),
         descshort: Joi.string()
-          .regex(/[A-Za-z -'.]{1+}/)
+          .regex(/[A-Za-z -'.]{1,}/)
           .required(),
         description: Joi.string()
-          .regex(/[A-Za-z -'.]{1+}/)
+          .regex(/[A-Za-z -'.]{1,}/)
           .required(),
         latitude: Joi.number().max(90).min(-90).required(),
         longitude: Joi.number().max(180).min(-180).required(),
@@ -214,13 +214,13 @@ const Pois = {
     validate: {
       payload: {
         name: Joi.string()
-          .regex(/[A-Za-z -'.]{1+}/)
+          .regex(/[A-Za-z -'.]{1,}/)
           .required(),
         descshort: Joi.string()
-          .regex(/[A-Za-z -'.]{1+}/)
+          .regex(/[A-Za-z -'.]{1,}/)
           .required(),
         description: Joi.string()
-          .regex(/[A-Za-z -'.]{1+}/)
+          .regex(/[A-Za-z -'.]{1,}/)
           .required(),
         latitude: Joi.number().max(90).min(-90).required(),
         longitude: Joi.number().max(180).min(-180).required(),

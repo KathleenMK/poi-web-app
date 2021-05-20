@@ -20,6 +20,7 @@ module.exports = [
   { method: "GET", path: "/api/pois/{id}", config: Pois.findOne },
   { method: "GET", path: "/api/categories/{id}/pois", config: Pois.findByCategory },
   { method: "POST", path: "/api/categories/{id}/pois", config: Pois.addPoi },
+  { method: "PUT", path: "/api/pois/{id}", config: Pois.update },
   { method: "DELETE", path: "/api/pois", config: Pois.deleteAll },
   { method: "DELETE", path: "/api/pois/{id}", config: Pois.deleteOne },
 

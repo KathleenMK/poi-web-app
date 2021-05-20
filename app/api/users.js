@@ -95,7 +95,11 @@ const Users = {
       user.firstName = userEdit.firstName;
       user.lastName = userEdit.lastName;
       user.email = userEdit.email;
-      user.password = userEdit.password;
+      if (user.password !== userEdit.password) {
+        //only if the user password has been changed should it be hashed, otherwise hashing an already hashed value
+        const hash = await bcrypt.hash(userEdit.password, saltRounds); // Added to hash and salt the password that has been input
+        user.password = hash;
+      }
       await user.save();
       if (user) {
         return { success: true };
@@ -116,7 +120,16 @@ const Users = {
           return Boom.unauthorized("Invalid password");
         } else {
           const token = utils.createToken(user);
-          return h.response({ success: true, token: token }).code(201);
+          return h
+            .response({
+              success: true,
+              token: token,
+              id: user.id,
+              firstName: user.firstName,
+              lastName: user.lastName,
+              password: user.password,
+            })
+            .code(201);
         }
       } catch (err) {
         return Boom.notFound("internal db failure");
