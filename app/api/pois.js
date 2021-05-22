@@ -4,6 +4,7 @@ const Poi = require("../models/poi");
 const Category = require("../models/category");
 const Boom = require("@hapi/boom");
 const utils = require("./utils.js");
+const Weather = require("../utils/weather");
 
 const Pois = {
   findAll: {
@@ -22,7 +23,24 @@ const Pois = {
     },
     handler: async function (request, h) {
       const poi = await Poi.findOne({ _id: request.params.id }).populate("contributor").populate("category"); //find().populate("contributor").populate("category");
-      return poi;
+      const latitude = poi.latitude;
+      const longitude = poi.longitude;
+      const readWeather = await Weather.readWeather(latitude, longitude);
+      console.log(readWeather);
+      const weather = {
+        temperature: Math.round(readWeather.main.temp - 273.15),
+        feelsLike: Math.round(readWeather.main.feels_like - 273.15),
+        clouds: readWeather.weather[0].description,
+        windSpeed: readWeather.wind.speed,
+        windDirection: readWeather.wind.deg,
+        visibility: readWeather.visibility / 1000,
+        humidity: readWeather.main.humidity,
+      };
+      const poiInc = {
+        poi: poi,
+        weather: weather,
+      };
+      return poiInc;
     },
   },
 
@@ -31,7 +49,7 @@ const Pois = {
       strategy: "jwt",
     },
     handler: async function (request, h) {
-      const pois = await Poi.find({ category: request.params.id });
+      const pois = await Poi.find({ category: request.params.id }).populate("contributor").populate("category");
       return pois;
     },
   },

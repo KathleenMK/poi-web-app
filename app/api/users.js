@@ -56,7 +56,21 @@ const Users = {
       });
       const user = await newUser.save();
       if (user) {
-        return h.response(user).code(201);
+        const token = utils.createToken(user);
+        console.log(user);
+        console.log(token);
+        return h
+          .response({
+            success: true,
+            token: token,
+            id: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            password: user.password,
+            email: user.email,
+          })
+          .code(201);
+        //return h.response(user).code(201);
       }
       return Boom.badImplementation("error creating user");
     },

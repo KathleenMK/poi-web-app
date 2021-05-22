@@ -43,13 +43,19 @@ suite("User API tests", function () {
     assert.equal(returnedUser.email, newUser.email);
     //console.log(await bcrypt.compare(returnedUser.password, newUser.password));
     //assert.isTrue(await bcrypt.compare(returnedUser.password, newUser.password));  //attempt to compare password
-    assert.isDefined(returnedUser._id);
+    assert.isDefined(returnedUser.id);
   });
 
   test("get user", async function () {
-    const u1 = await poiService.createUser(newUser);
-    const u2 = await poiService.getUser(u1._id);
-    assert.deepEqual(u1, u2);
+    const u1 = await poiService.createUser(newUser); //createUser now includes token and success
+    const u2 = await poiService.getUser(u1.id);
+    console.log(u1);
+    console.log(u2);
+    assert.equal(u1.firstName, u2.firstName);
+    assert.equal(u1.lastName, u2.lastName);
+    assert.equal(u1.email, u2.email);
+    assert.equal(u1.id, u2._id);
+    //assert.deepEqual(u1, u2); //no longer appropriate so replaced with the above
   });
 
   test("get invalid user", async function () {
@@ -61,9 +67,10 @@ suite("User API tests", function () {
 
   test("delete a user", async function () {
     let u = await poiService.createUser(newUser);
-    assert(u._id != null);
-    await poiService.deleteOneUser(u._id);
-    u = await poiService.getUser(u._id);
+    console.log(u);
+    assert(u.id != null);
+    await poiService.deleteOneUser(u.id);
+    u = await poiService.getUser(u.id);
     assert(u == null);
   });
 
@@ -73,13 +80,12 @@ suite("User API tests", function () {
     await poiService.authenticate(newUser);
     console.log(users);
     for (let u of users) {
-      //reduced users to 2 from 3 to avoid timeout error
       await poiService.createUser(u);
     }
 
     const allUsers = await poiService.getUsers();
     assert.equal(allUsers.length, users.length + 1);
-  }).timeout(3000); //timeout erroring out at default 2000ms
+  }).timeout(4000); //timeout erroring out at default 2000ms
 
   test("get users detail", async function () {
     await poiService.deleteAllUsers();
