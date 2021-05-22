@@ -30,7 +30,7 @@
     "_model": "AdminUser",
     "admin": {
       "firstName": "Admin",
-      "lastName": "",
+      "lastName": "Admin",
       "email": "admin@gmail.com",
       "password": "$2a$10$moP2iC4xeFWbk0MZIn7Ai.zuZhKTkMFbN42nidnN2.7Zpgw7K6q22"
     }

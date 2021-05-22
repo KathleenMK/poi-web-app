@@ -1,5 +1,6 @@
 const Categories = require("./app/api/categories");
 const Users = require("./app/api/users");
+const Adminusers = require("./app/api/adminusers");
 const Pois = require("./app/api/pois");
 
 module.exports = [
@@ -25,4 +26,5 @@ module.exports = [
   { method: "DELETE", path: "/api/pois/{id}", config: Pois.deleteOne },
 
   { method: "POST", path: "/api/users/authenticate", config: Users.authenticate },
+  { method: "POST", path: "/api/adminusers/authenticate", config: Adminusers.authenticate },
 ];
