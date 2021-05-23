@@ -15,7 +15,7 @@ const Adminusers = {
         const adminuser = await Adminuser.findOne({ email: request.payload.email });
         if (!adminuser) {
           return Boom.unauthorized("User not found");
-        } else if (!adminuser.comparePassword(request.payload.password)) {
+        } else if (!(await adminuser.comparePassword(request.payload.password))) {
           return Boom.unauthorized("Invalid password");
         } else {
           const token = utils.createToken(adminuser);

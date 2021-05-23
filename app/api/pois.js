@@ -17,6 +17,21 @@ const Pois = {
     },
   },
 
+  findAllImages: {
+    auth: false,
+    handler: async function (request, h) {
+      const pois = await Poi.find().populate("contributor").populate("category");
+      console.log(pois);
+      let poi;
+      let images = [];
+      for (poi in pois) {
+        images.push(poi.imageurl);
+      }
+      console.log(images);
+      return images;
+    },
+  },
+
   findOne: {
     auth: {
       strategy: "jwt",

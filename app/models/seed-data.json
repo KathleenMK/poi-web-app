@@ -199,5 +199,15 @@
       "latitude": "53.97980199328845",
       "longitude": "-6.152871964001458"
     }
+  },
+  "reviews": {
+    "_model": "Review",
+    "number1": {
+      "poi": "->pois.tramore",
+      "text": "Great day out",
+      "rating": 7,
+      "date": "23/5/2021, 12:00:00",
+      "contributor": "->users.finn"
+    }
   }
 }

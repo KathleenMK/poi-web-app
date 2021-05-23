@@ -1,6 +1,7 @@
 "use strict";
 
 const User = require("../models/user");
+const AdminUser = require("../models/adminuser");
 const Boom = require("@hapi/boom");
 const utils = require("./utils.js");
 const bcrypt = require("bcrypt"); //added for password security
@@ -47,6 +48,12 @@ const Users = {
   create: {
     auth: false,
     handler: async function (request, h) {
+      let usercheck = await User.findByEmail(request.payload.email);
+      let adminUsercheck = await AdminUser.findByEmail(request.payload.email);
+      if (usercheck || adminUsercheck) {
+        const message = "Email address is already registered";
+        throw Boom.badData(message);
+      }
       const hash = await bcrypt.hash(request.payload.password, saltRounds); // Added to hash and salt the password that has been input
       const newUser = new User({
         firstName: request.payload.firstName,
@@ -130,7 +137,7 @@ const Users = {
         const user = await User.findOne({ email: request.payload.email });
         if (!user) {
           return Boom.unauthorized("User not found");
-        } else if (!user.comparePassword(request.payload.password)) {
+        } else if (!(await user.comparePassword(request.payload.password))) {
           return Boom.unauthorized("Invalid password");
         } else {
           const token = utils.createToken(user);
