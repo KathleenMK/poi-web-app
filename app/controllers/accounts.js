@@ -113,7 +113,7 @@ const Accounts = {
           request.cookieAuth.set({ id: adminUser.id });
           return h.redirect("/admin");
         }
-        user.comparePassword(password);
+        await user.comparePassword(password); //crashes without await
         request.cookieAuth.set({ id: user.id });
         return h.redirect("/report");
       } catch (err) {

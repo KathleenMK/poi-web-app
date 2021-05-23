@@ -27,6 +27,6 @@ suite("Authentication API tests", function () {
 
     const userInfo = utils.decodeToken(response.token);
     assert.equal(userInfo.email, returnedUser.email);
-    assert.equal(userInfo.userId, returnedUser._id);
+    assert.equal(userInfo.userId, returnedUser.id);
   });
 });

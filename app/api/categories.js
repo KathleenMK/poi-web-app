@@ -39,7 +39,8 @@ const Categories = {
       const newCategory = new Category(request.payload);
       const category = await newCategory.save();
       if (category) {
-        return h.response(category).code(201);
+        return category;
+        //h.response(category).code(201);
       }
       return Boom.badImplementation("error creating category");
     },

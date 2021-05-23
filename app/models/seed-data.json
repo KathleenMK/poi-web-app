@@ -30,7 +30,7 @@
     "_model": "AdminUser",
     "admin": {
       "firstName": "Admin",
-      "lastName": "",
+      "lastName": "Admin",
       "email": "admin@gmail.com",
       "password": "$2a$10$moP2iC4xeFWbk0MZIn7Ai.zuZhKTkMFbN42nidnN2.7Zpgw7K6q22"
     }
@@ -198,6 +198,16 @@
       "category": "->categories.leinster",
       "latitude": "53.97980199328845",
       "longitude": "-6.152871964001458"
+    }
+  },
+  "reviews": {
+    "_model": "Review",
+    "number1": {
+      "poi": "->pois.tramore",
+      "text": "Great day out",
+      "rating": 7,
+      "date": "23/5/2021, 12:00:00",
+      "contributor": "->users.finn"
     }
   }
 }

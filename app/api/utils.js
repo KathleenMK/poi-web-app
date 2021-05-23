@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
+const Adminuser = require("../models/adminuser");
 
 exports.createToken = function (user) {
   return jwt.sign({ id: user._id, email: user.email }, "secretpasswordnotrevealedtoanyone", {
@@ -21,7 +22,8 @@ exports.decodeToken = function (token) {
 
 exports.validate = async function (decoded, request) {
   const user = await User.findOne({ _id: decoded.id });
-  if (!user) {
+  const adminuser = await Adminuser.findOne({ _id: decoded.id });
+  if (!user && !adminuser) {
     return { isValid: false };
   } else {
     return { isValid: true };
