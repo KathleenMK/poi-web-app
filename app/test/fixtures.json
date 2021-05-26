@@ -22,17 +22,17 @@
   ],
   "categories": [
     {
-      "name": "Lisa",
-      "description": "President"
+      "name": "Test1",
+      "description": "A category"
     },
     {
-      "name": "Donald",
-      "description": "President"
+      "name": "Test2",
+      "description": "Another category"
     }
   ],
   "newCategory": {
-    "name": "Barnie",
-    "description": "President"
+    "name": "Test3",
+    "description": "And another category"
   },
   "newUser": {
     "firstName": "Maggie",
@@ -68,5 +68,33 @@
       "latitude": 51.5008143,
       "longitude": -9.2667644
     }
-  ]
+  ],
+  "newPoi": {
+  "name": "Test poi",
+  "descshort": "This is a small scenic beach located in a rural area 6km from Skibbereen with marsh and lake in background.",
+  "description": "This is a small scenic beach located in a rural area 6km from Skibbereen with marsh and lake in background. It can be reached by turning off the R596 at Abisdealy Bridge and follow sign for Tragumna. This beach is lifeguarded during the bathing season (lifeguard times are displayed on the beach information board).",
+  "imageurl": "https://res.cloudinary.com/dzkcnbv7p/image/upload/v1615928689/ecosekrebc28zfxgqvqy.jpg",
+  "imagepublicid": "ecosekrebc28zfxgqvqy",
+  "latitude": 51.5008143,
+  "longitude": -9.2667644
+},
+  "newReview": {
+    "text": "Review number 1",
+    "rating": 9,
+    "date": "23/5/2021, 12:00:00"
+  },
+  "reviews": [
+    {"text": "Review number 2",
+      "rating": 3,
+      "date": "23/5/2021, 12:00:00"
+    },
+    {"text": "Review number 3",
+      "rating": 1,
+      "date": "23/5/2021, 12:00:00"
+    },
+    {"text": "Review number 4",
+      "rating": 7,
+      "date": "23/5/2021, 12:00:00"
+    }
+    ]
 }

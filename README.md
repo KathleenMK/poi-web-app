@@ -1,8 +1,9 @@
 ## A Web Application that manages Points of Interest, specifically beaches
 
-### Deployed app on:
+### Deployed app and API service on:
 ### [Heroku](https://lit-hamlet-10675.herokuapp.com/)
 ###   &
+### Deployed app (as per v3):
 ### [Glitch](https://attractive-pouncing-dove.glitch.me/)
 
 ## Features of the app are:
@@ -14,6 +15,14 @@
 -  Display the current weather, based on the latitude and longitude, using an OpenWeather API
 -  Administrator login, can delete users and categories
 
+## Features of the API service are:
+
+- As above
+  plus:
+- Find and add reviews per points of interest
+- authenticate using JWT strategy
+- API tests also available
+
 ## Technology Stack:
 
 - __UI:__
@@ -21,16 +30,22 @@
   - uikit
 - __Components:__  
   - handlebars 
-  - mongooes 
+  - mongoose 
   - dotenv
   - cloudinary
   - mais-mongoose-seeder
+  - mocha
+  - chai
+  - jsonwebtoken
+  - lodash
+  - axios
 - __Framework:__
   - hapi 
   - inert 
   - vision
   - cookie
   - boom
+  - joi
 - __Platforms:__
   - node
   - mongodb
@@ -55,10 +70,3 @@
 - git clone the repository
 - run npm install
 - the .env file variables, as above, should be assigned values
-- the index.js file server declaration should be updated to the localhost as follows:<br>
-const server = Hapi.server({
-  port: 3000,
-  host: 'localhost',
-});
-- the package.json file updated to remove the following entry from the scripts section:<br>
-"start": "node index.js"

@@ -23,31 +23,19 @@ suite("User API tests", function () {
     poiService.clearAuth();
   });
 
-  /*
-  //is this replicating the above
-  setup(async function () {
-    await poiService.deleteAllUsers();
-  });
-
-  teardown(async function () {
-    await poiService.deleteAllUsers();
-  });
-
-   */
-
   test("create a user", async function () {
-    const returnedUser = await poiService.createUser(newUser);
+    const returnedUser = await poiService.createUser(users[0]);
     //assert(_.some([returnedUser], newUser), "returnedUser must be a superset of newUser"); was replaced as password is hashed so will not be equal
-    assert.equal(returnedUser.firstName, newUser.firstName);
-    assert.equal(returnedUser.lastName, newUser.lastName);
-    assert.equal(returnedUser.email, newUser.email);
+    assert.equal(returnedUser.firstName, users[0].firstName);
+    assert.equal(returnedUser.lastName, users[0].lastName);
+    assert.equal(returnedUser.email, users[0].email);
     //console.log(await bcrypt.compare(returnedUser.password, newUser.password));
     //assert.isTrue(await bcrypt.compare(returnedUser.password, newUser.password));  //attempt to compare password
     assert.isDefined(returnedUser.id);
   });
 
   test("get user", async function () {
-    const u1 = await poiService.createUser(newUser); //createUser now includes token and success
+    const u1 = await poiService.createUser(users[1]); //createUser now includes token and success
     const u2 = await poiService.getUser(u1.id);
     console.log(u1);
     console.log(u2);
@@ -66,7 +54,7 @@ suite("User API tests", function () {
   });
 
   test("delete a user", async function () {
-    let u = await poiService.createUser(newUser);
+    let u = await poiService.createUser(users[2]);
     console.log(u);
     assert(u.id != null);
     await poiService.deleteOneUser(u.id);
@@ -112,13 +100,40 @@ suite("User API tests", function () {
       //assert.isTrue(await bcrypt.compare(returnedUser.password, newUser.password));
       //assert(_.some([allUsers[i]], users[i]), "returnedUser must be a superset of newUser");
     }
-  }).timeout(3000);
+  }).timeout(4000);
 
   test("get all users empty", async function () {
     await poiService.deleteAllUsers();
+    const allUsersBefore = await poiService.getUsers();
+    assert(allUsersBefore == null);
     const user = await poiService.createUser(newUser);
     await poiService.authenticate(newUser);
     const allUsers = await poiService.getUsers();
     assert.equal(allUsers.length, 1);
-  });
-}).timeout(3000);
+  }).timeout(3000);
+
+  test("update user", async function () {
+    await poiService.deleteAllUsers();
+    const user = await poiService.createUser(newUser);
+    await poiService.authenticate(newUser);
+    const userDetails = {
+      firstName: "testFirstName",
+      lastName: user.lastName,
+      email: user.email,
+      password: user.password,
+      _id: user.id,
+    };
+    console.log(userDetails);
+    console.log(user);
+    await poiService.updateUser(user.id, userDetails);
+    const updatedUser = await poiService.getUser(user.id);
+    console.log(updatedUser);
+    console.log(user + "is the user after update");
+    assert.equal(updatedUser._id, user.id); //is the same user
+    assert.notEqual(updatedUser.firstName, newUser.firstName); //firstname does not match
+    assert.equal(updatedUser.firstName, "testFirstName"); //firstName has been updated
+    assert.equal(updatedUser.lastName, newUser.lastName);
+    assert.equal(updatedUser.email, newUser.email);
+    assert.equal(updatedUser.password, user.password); //password has been salted and hashed, can't compare
+  }).timeout(4000);
+});
