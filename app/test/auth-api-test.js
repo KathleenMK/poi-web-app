@@ -20,7 +20,8 @@ suite("Authentication API tests", function () {
     const response = await poiService.authenticate(newUser);
     assert(response.success);
     assert.isDefined(response.token);
-  });
+  }).timeout(5000);
+
   test("verify Token", async function () {
     const returnedUser = await poiService.createUser(newUser);
     const response = await poiService.authenticate(newUser);
@@ -28,5 +29,5 @@ suite("Authentication API tests", function () {
     const userInfo = utils.decodeToken(response.token);
     assert.equal(userInfo.email, returnedUser.email);
     assert.equal(userInfo.userId, returnedUser.id);
-  });
+  }).timeout(5000);
 });

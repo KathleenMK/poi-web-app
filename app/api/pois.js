@@ -13,22 +13,8 @@ const Pois = {
     },
     handler: async function (request, h) {
       const pois = await Poi.find().populate("contributor").populate("category");
-      return pois;
-    },
-  },
-
-  findAllImages: {
-    auth: false,
-    handler: async function (request, h) {
-      const pois = await Poi.find().populate("contributor").populate("category");
       console.log(pois);
-      let poi;
-      let images = [];
-      for (poi in pois) {
-        images.push(poi.imageurl);
-      }
-      console.log(images);
-      return images;
+      return pois;
     },
   },
 
@@ -68,6 +54,7 @@ const Pois = {
       return pois;
     },
   },
+
   addPoi: {
     auth: {
       strategy: "jwt",
@@ -118,10 +105,9 @@ const Pois = {
   },
 
   deleteOne: {
-    auth: false,
-    //{
-    //  strategy: "jwt",
-    //},
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       const poi = await Poi.deleteOne({ _id: request.params.id });
       if (poi) {

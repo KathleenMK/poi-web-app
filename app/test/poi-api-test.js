@@ -43,12 +43,28 @@ suite("Poi API tests", function () {
     for (var i = 0; i < pois.length; i++) {
       await poiService.addPoi(returnedCategory._id, pois[i]);
     }
-
     const returnedPois = await poiService.getPois(returnedCategory._id);
     assert.equal(returnedPois.length, pois.length);
     for (var i = 0; i < pois.length; i++) {
       assert(_.some([returnedPois[i]], pois[i]), "returned poi must be a superset of poi");
     }
+  });
+
+  test("add multiple pois to multiple categories and delete all", async function () {
+    const returnedCategoryFirst = await poiService.createCategory(newCategory);
+    for (var i = 0; i < pois.length; i++) {
+      await poiService.addPoi(returnedCategoryFirst._id, pois[i]);
+    }
+    const returnedCategorySecond = await poiService.createCategory(newCategory);
+    for (var i = 0; i < pois.length; i++) {
+      await poiService.addPoi(returnedCategorySecond._id, pois[i]);
+    }
+    const returnedPois = await poiService.getAllPois();
+    assert.equal(returnedPois.length, pois.length * 2);
+
+    await poiService.deleteAllPois();
+    const returnedPoisAfter = await poiService.getAllPois();
+    assert.equal(returnedPoisAfter.length, 0);
   });
 
   test("delete all pois", async function () {
@@ -69,4 +85,39 @@ suite("Poi API tests", function () {
     const returnedPois = await poiService.getPois(returnedCategory._id);
     assert.isDefined(returnedPois[0].contributor);
   });
+
+  test("update poi and find one", async function () {
+    const returnedCategory = await poiService.createCategory(newCategory);
+    const poi = await poiService.addPoi(returnedCategory._id, pois[0]);
+    const testDesc = "This is a test short description";
+    const poiDetails = {
+      name: poi.name,
+      descshort: testDesc,
+      description: poi.description,
+      latitude: poi.latitude,
+      longitude: poi.longitude,
+      _id: poi._id,
+      category: poi.category,
+    };
+    //console.log(poiDetails);
+    //console.log(poi);
+    await poiService.updatePoi(poi._id, poiDetails);
+    const updatedPoi = await poiService.getOnePoi(poi._id);
+    console.log(updatedPoi.poi.descshort);
+    assert.equal(updatedPoi._id, poi.id); //is the same poi
+    assert.notEqual(updatedPoi.poi.descshort, pois[0].descshort); //firstname does not match
+    assert.equal(updatedPoi.poi.descshort, testDesc); //short description has been updated
+    assert.equal(updatedPoi.poi.name, pois[0].name);
+  }).timeout(4000);
+
+  test("find and delete one poi", async function () {
+    const returnedCategory = await poiService.createCategory(newCategory);
+    const poi = await poiService.addPoi(returnedCategory._id, pois[0]);
+    const foundPoi = await poiService.getOnePoi(poi._id);
+    console.log(poi);
+    console.log(foundPoi);
+    assert.equal(poi._id, foundPoi.poi._id); //is the same poi
+    await poiService.deleteOnePoi(poi._id);
+    assert.isNotOk(await poiService.getOnePoi(poi._id)); //firstname does not match
+  }).timeout(4000);
 });

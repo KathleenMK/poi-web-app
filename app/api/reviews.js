@@ -45,6 +45,46 @@ const Reviews = {
       return review;
     },
   },
+
+  deleteAll: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      await Review.remove({});
+      return { success: true };
+    },
+  },
+
+  deleteOne: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      const response = await Review.deleteOne({ _id: request.params.id });
+      if (response.deletedCount == 1) {
+        return { success: true };
+      }
+      return Boom.notFound("id not found");
+    },
+  },
+
+  findOne: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const review = await Review.findOne({ _id: request.params.id });
+        if (!review) {
+          return Boom.notFound("No Review with this id");
+        }
+        return review;
+      } catch (err) {
+        return Boom.notFound("No Review with this id");
+      }
+    },
+  },
 };
 
 module.exports = Reviews;

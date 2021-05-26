@@ -20,14 +20,10 @@ suite("Category API tests", function () {
 
   suiteTeardown(async function () {
     await poiService.deleteAllUsers();
-    poiService.clearAuth();
+    await poiService.clearAuth();
   });
 
   setup(async function () {
-    await poiService.deleteAllCategories();
-  });
-
-  teardown(async function () {
     await poiService.deleteAllCategories();
   });
 
@@ -80,6 +76,6 @@ suite("Category API tests", function () {
 
   test("get all categories empty", async function () {
     const allCategories = await poiService.getCategories();
-    assert.equal(allCategories.length, 0);
+    assert.equal(allCategories.length, 0); //delete all in setup
   });
 });
