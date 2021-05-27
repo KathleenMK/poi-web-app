@@ -13,7 +13,7 @@ suite("Poi API tests", function () {
   const poiService = new PoiService(fixtures.poiService);
 
   suiteSetup(async function () {
-    await poiService.deleteAllUsers();
+    //await poiService.deleteAllUsers();
     const returnedUser = await poiService.createUser(newUser);
     const response = await poiService.authenticate(newUser);
   });
@@ -36,7 +36,7 @@ suite("Poi API tests", function () {
     const returnedPois = await poiService.getPois(returnedCategory._id);
     assert.equal(returnedPois.length, 1);
     assert(_.some([returnedPois[0]], pois[0]), "returned poi must be a superset of poi");
-  });
+  }).timeout(10000);
 
   test("add multiple pois", async function () {
     const returnedCategory = await poiService.createCategory(newCategory);
@@ -48,7 +48,7 @@ suite("Poi API tests", function () {
     for (var i = 0; i < pois.length; i++) {
       assert(_.some([returnedPois[i]], pois[i]), "returned poi must be a superset of poi");
     }
-  });
+  }).timeout(10000);
 
   test("add multiple pois to multiple categories and delete all", async function () {
     const returnedCategoryFirst = await poiService.createCategory(newCategory);
@@ -65,7 +65,7 @@ suite("Poi API tests", function () {
     await poiService.deleteAllPois();
     const returnedPoisAfter = await poiService.getAllPois();
     assert.equal(returnedPoisAfter.length, 0);
-  });
+  }).timeout(10000);
 
   test("delete all pois", async function () {
     const returnedCategory = await poiService.createCategory(newCategory);
@@ -77,7 +77,7 @@ suite("Poi API tests", function () {
     await poiService.deleteAllPois();
     const p2 = await poiService.getPois(returnedCategory._id);
     assert.equal(p2.length, 0);
-  });
+  }).timeout(10000);
 
   test("create a poi and check contributor", async function () {
     const returnedCategory = await poiService.createCategory(newCategory);
@@ -108,7 +108,7 @@ suite("Poi API tests", function () {
     assert.notEqual(updatedPoi.poi.descshort, pois[0].descshort); //firstname does not match
     assert.equal(updatedPoi.poi.descshort, testDesc); //short description has been updated
     assert.equal(updatedPoi.poi.name, pois[0].name);
-  }).timeout(4000);
+  }).timeout(10000);
 
   test("find and delete one poi", async function () {
     const returnedCategory = await poiService.createCategory(newCategory);
@@ -119,5 +119,5 @@ suite("Poi API tests", function () {
     assert.equal(poi._id, foundPoi.poi._id); //is the same poi
     await poiService.deleteOnePoi(poi._id);
     assert.isNotOk(await poiService.getOnePoi(poi._id)); //firstname does not match
-  }).timeout(4000);
+  }).timeout(10000);
 });

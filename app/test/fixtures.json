@@ -1,5 +1,5 @@
 {
-  "poiService": "http://localhost:4000",
+  "poiService": "https://lit-hamlet-10675.herokuapp.com",
   "users": [
     {
       "firstName": "Homer",

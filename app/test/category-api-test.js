@@ -13,7 +13,7 @@ suite("Category API tests", function () {
   const poiService = new PoiService(fixtures.poiService);
 
   suiteSetup(async function () {
-    await poiService.deleteAllUsers();
+    //await poiService.deleteAllUsers();
     const returnedUser = await poiService.createUser(newUser);
     const response = await poiService.authenticate(newUser);
   });
@@ -31,20 +31,20 @@ suite("Category API tests", function () {
     const returnedCategory = await poiService.createCategory(newCategory);
     assert(_.some([returnedCategory], newCategory), "returnedCategory must be a superset of newCategory");
     assert.isDefined(returnedCategory._id);
-  });
+  }).timeout(10000);
 
   test("get category", async function () {
     const c1 = await poiService.createCategory(newCategory);
     const c2 = await poiService.getCategory(c1._id);
     assert.deepEqual(c1, c2);
-  });
+  }).timeout(10000);
 
   test("get invalid category", async function () {
     const c1 = await poiService.getCategory("1234");
     assert.isNull(c1);
     const c2 = await poiService.getCategory("012345678901234567890123");
     assert.isNull(c2);
-  });
+  }).timeout(10000);
 
   test("delete a category", async function () {
     let c = await poiService.createCategory(newCategory);
@@ -52,7 +52,7 @@ suite("Category API tests", function () {
     await poiService.deleteOneCategory(c._id);
     c = await poiService.getCategory(c._id);
     assert(c == null);
-  });
+  }).timeout(10000);
 
   test("get all categories", async function () {
     for (let c of categories) {
@@ -61,7 +61,7 @@ suite("Category API tests", function () {
 
     const allCategories = await poiService.getCategories();
     assert.equal(allCategories.length, categories.length);
-  });
+  }).timeout(10000);
 
   test("get categories detail", async function () {
     for (let c of categories) {
@@ -72,10 +72,10 @@ suite("Category API tests", function () {
     for (var i = 0; i < categories.length; i++) {
       assert(_.some([allCategories[i]], categories[i]), "returnedCategory must be a superset of newCategory");
     }
-  });
+  }).timeout(10000);
 
   test("get all categories empty", async function () {
     const allCategories = await poiService.getCategories();
     assert.equal(allCategories.length, 0); //delete all in setup
-  });
+  }).timeout(10000);
 });

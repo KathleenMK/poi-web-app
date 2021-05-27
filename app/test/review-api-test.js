@@ -16,10 +16,10 @@ suite("Review API tests", function () {
   const poiService = new PoiService(fixtures.poiService);
 
   suiteSetup(async function () {
-    await poiService.deleteAllUsers();
-    await poiService.deleteAllReviews();
-    await poiService.deleteAllCategories();
-    await poiService.deleteAllPois();
+    //await poiService.deleteAllUsers();
+    //await poiService.deleteAllReviews();
+    //await poiService.deleteAllCategories();
+    //await poiService.deleteAllPois();
     const returnedUser = await poiService.createUser(newUser);
     const response = await poiService.authenticate(newUser);
   });
@@ -40,7 +40,7 @@ suite("Review API tests", function () {
     assert.equal(returnedReviews.length, 1); //check review has been created
     assert(_.some([returnedReviews[0]], newReview), "returned review must be a superset of review");
     assert.isDefined(returnedReviews[0].contributor); //check contributor has been populated
-  });
+  }).timeout(10000);
 
   test("delete all reviews for a POI", async function () {
     const returnedCategory = await poiService.createCategory(newCategory);
@@ -53,7 +53,7 @@ suite("Review API tests", function () {
     await poiService.deleteAllReviews();
     const r2 = await poiService.getReviewsPoi(returnedPoi._id);
     assert.equal(r2.length, 0); //check reviews have been deleted for that POI
-  });
+  }).timeout(10000);
 
   test("delete one review by id", async function () {
     const returnedCategory = await poiService.createCategory(newCategory);
@@ -68,7 +68,7 @@ suite("Review API tests", function () {
     const r2 = await poiService.getReviewsPoi(returnedPoi._id);
     assert.equal(r2.length, reviews.length); //check on length is one less
     assert.isNotOk(await poiService.getReview(returnedReview._id)); //check that deleted review has not been found
-  });
+  }).timeout(10000);
 
   test("find all and delete all reviews", async function () {
     await poiService.deleteAllReviews();
@@ -87,5 +87,5 @@ suite("Review API tests", function () {
     await poiService.deleteAllReviews();
     const count = await poiService.getAllReviews(); //check on delete all reviews
     assert.equal(count.length, 0);
-  });
+  }).timeout(10000);
 });

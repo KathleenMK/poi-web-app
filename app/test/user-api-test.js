@@ -13,7 +13,7 @@ suite("User API tests", function () {
   const poiService = new PoiService(fixtures.poiService);
 
   suiteSetup(async function () {
-    await poiService.deleteAllUsers();
+    //await poiService.deleteAllUsers();
     const returnedUser = await poiService.createUser(newUser);
     const response = await poiService.authenticate(newUser);
   });
@@ -32,7 +32,7 @@ suite("User API tests", function () {
     //console.log(await bcrypt.compare(returnedUser.password, newUser.password));
     //assert.isTrue(await bcrypt.compare(returnedUser.password, newUser.password));  //attempt to compare password
     assert.isDefined(returnedUser.id);
-  });
+  }).timeout(10000);
 
   test("get user", async function () {
     const u1 = await poiService.createUser(users[1]); //createUser now includes token and success
@@ -44,14 +44,14 @@ suite("User API tests", function () {
     assert.equal(u1.email, u2.email);
     assert.equal(u1.id, u2._id);
     //assert.deepEqual(u1, u2); //no longer appropriate so replaced with the above
-  });
+  }).timeout(10000);
 
   test("get invalid user", async function () {
     const u1 = await poiService.getUser("1234");
     assert.isNull(u1);
     const u2 = await poiService.getUser("012345678901234567890123");
     assert.isNull(u2);
-  });
+  }).timeout(10000);
 
   test("delete a user", async function () {
     let u = await poiService.createUser(users[2]);
@@ -60,7 +60,7 @@ suite("User API tests", function () {
     await poiService.deleteOneUser(u.id);
     u = await poiService.getUser(u.id);
     assert(u == null);
-  });
+  }).timeout(10000);
 
   test("get all users", async function () {
     await poiService.deleteAllUsers();
@@ -73,7 +73,7 @@ suite("User API tests", function () {
 
     const allUsers = await poiService.getUsers();
     assert.equal(allUsers.length, users.length + 1);
-  }).timeout(4000); //timeout erroring out at default 2000ms
+  }).timeout(10000); //timeout erroring out at default 2000ms
 
   test("get users detail", async function () {
     await poiService.deleteAllUsers();
@@ -100,7 +100,7 @@ suite("User API tests", function () {
       //assert.isTrue(await bcrypt.compare(returnedUser.password, newUser.password));
       //assert(_.some([allUsers[i]], users[i]), "returnedUser must be a superset of newUser");
     }
-  }).timeout(4000);
+  }).timeout(10000);
 
   test("get all users empty", async function () {
     await poiService.deleteAllUsers();
@@ -110,7 +110,7 @@ suite("User API tests", function () {
     await poiService.authenticate(newUser);
     const allUsers = await poiService.getUsers();
     assert.equal(allUsers.length, 1);
-  }).timeout(3000);
+  }).timeout(10000);
 
   test("update user", async function () {
     await poiService.deleteAllUsers();
@@ -135,5 +135,5 @@ suite("User API tests", function () {
     assert.equal(updatedUser.lastName, newUser.lastName);
     assert.equal(updatedUser.email, newUser.email);
     assert.equal(updatedUser.password, user.password); //password has been salted and hashed, can't compare
-  }).timeout(4000);
+  }).timeout(10000);
 });
