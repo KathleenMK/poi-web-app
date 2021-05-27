@@ -125,10 +125,10 @@ const Pois = {
     validate: {
       payload: {
         name: Joi.string()
-          .regex(/[A-Za-z -'.]{1+}/)
+          .regex(/[A-Za-z -'.]{1,}/)
           .required(),
         description: Joi.string()
-          .regex(/[A-Za-z -'.]{1+}/)
+          .regex(/[A-Za-z -'.]{1,}/)
           .required(),
       },
       options: {
